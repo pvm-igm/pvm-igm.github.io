@@ -51,8 +51,6 @@ if(!require("fontawesome")){
   install_version("fontawesome", version = "0.3.0", repos = "http://cran.us.r-project.org")
 library("fontawesome")}
 
-htmltools::tagList(fontawesome::fa_html_dependency())
-
 if (!require("GISAIDR")){
   devtools::install_github("Wytamma/GISAIDR")
 library("GISAIDR")}
@@ -74,6 +72,8 @@ pacman::p_load(
   plyr,
   REDCapR,
   reshape2)
+
+htmltools::tagList(fontawesome::fa_html_dependency())
 
 ```
 
@@ -142,6 +142,7 @@ redcap_sars2diag_igm$data_teste <- format(as.Date(redcap_sars2diag_igm$data_test
 #   token = "431A5D970FFD7855F1A5542CC1662EA5",
 #   report_id = 14362)$data
 
+# redcap_sars2diag_gal_raw <- read.csv(file.path("C:/OneDrive/OneDrive - FIOCRUZ/Sequenciamento/BANCO_DE_DADOS",
 redcap_sars2diag_gal_raw <- read.csv(file.path("C:/OneDrive/OneDrive - FIOCRUZ/Sequenciamento/BANCO_DE_DADOS",
                              paste0("REDCap_DIAGCOVID19_DATA_", Sys.Date(), ".csv")),
                    header = TRUE, sep = ",", stringsAsFactors = TRUE)
@@ -167,7 +168,7 @@ redcap_sars2diag_rtqpcr <- n_distinct(redcap_sars2diag$placa_id)
 
 flexdashboard::valueBox(redcap_sars2diag_rtqpcr, 
          caption = "PLACAS DE RT-qPCR",
-         icon = "fa-computer-classic",
+         icon = "fa-computer",
          color = "#25C457")
 
 ```
@@ -180,7 +181,7 @@ redcap_sars2diag_diag <- length(redcap_sars2diag$rec)
 
 flexdashboard::valueBox(redcap_sars2diag_diag, 
          caption = "AMOSTRAS TESTADAS",
-         icon = "fa-rectangle-barcode",
+         icon = "fa-barcode",
          color = "#25C457")
 
 ```
@@ -198,7 +199,7 @@ redcap_sars2diag_tpa_median <- as.integer(median(redcap_sars2diag_tpa$tpa))
 
 flexdashboard::valueBox(redcap_sars2diag_tpa_median, 
          caption = "DIAS PARA LIBERAÇÃO DOS RESULTADOS",
-         icon = "fa-memo-circle-check",
+         icon = "fa-circle-check",
          color = "#25C457")
 
 ```
