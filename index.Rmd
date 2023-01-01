@@ -143,7 +143,7 @@ redcap_sars2diag_igm$data_teste <- format(as.Date(redcap_sars2diag_igm$data_test
 #   report_id = 14362)$data
 
 # redcap_sars2diag_gal_raw <- read.csv(file.path("C:/OneDrive/OneDrive - FIOCRUZ/Sequenciamento/BANCO_DE_DADOS",
-redcap_sars2diag_gal_raw <- read.csv(file.path("C:/OneDrive/OneDrive - FIOCRUZ/Sequenciamento/BANCO_DE_DADOS",
+redcap_sars2diag_gal_raw <- read.csv(file.path("/mnt/c/OneDrive/OneDrive\ -\ FIOCRUZ/Sequenciamento/BANCO_DE_DADOS/",
                              paste0("REDCap_DIAGCOVID19_DATA_", Sys.Date(), ".csv")),
                    header = TRUE, sep = ",", stringsAsFactors = TRUE)
 redcap_sars2diag_gal_raw <- redcap_sars2diag_gal_raw %>% mutate_all(na_if, "")
