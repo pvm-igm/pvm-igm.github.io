@@ -6,7 +6,7 @@ output:
   flexdashboard::flex_dashboard:
     vertical_layout: fill
     social: ["twitter", "facebook"]
-    source_code: "https://github.com/pvm-igm/painel"
+    source_code: "https://github.com/pvm-igm/pvm-igm.github.io/blob/main/index.Rmd"
     theme:
       version: 4
       bg: "#FFFFFF"
