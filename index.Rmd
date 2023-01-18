@@ -98,20 +98,23 @@ flexdashboard::valueBox(
 ### {.value-box}
 
 ```{r}
+
+token_1 <- args[1]
+report_id_1 <- as.integer(args[2])
 redcap_sars2diag_igm <- REDCapR::redcap_report(
   redcap_uri = "https://bdp.bahia.fiocruz.br/api/",
-  token = "33892C42D73BBCDE1187966BED3FC475",
-  report_id = 14365)$data
+  token = token_1,
+  report_id = report_id_1)$data
 names(redcap_sars2diag_igm) <- c("rec", "data_teste", "placa_id", "termociclador", "kit_pcr", "lote_pcr",
                                     "result_pcr", "ct_b2m", "ct_orflab", "ct_covn", "ct_gene4")
 redcap_sars2diag_igm$data_teste <- format(as.Date(redcap_sars2diag_igm$data_teste, format = "%d/%m/%Y"), "%Y-%m-%d")
 
+# token_2 <- args[3]
+# report_id_2 <- as.integer(args[4])
 # redcap_sars2diag_gal <- REDCapR::redcap_report(
 #   redcap_uri = "https://bdp.bahia.fiocruz.br/api/",
-#   token = "431A5D970FFD7855F1A5542CC1662EA5",
-#   report_id = 14362)$data
-
-# redcap_sars2diag_gal_raw_path <- args[1]
+#   token = token_2,
+#   report_id = report_id_2)$data
 redcap_sars2diag_gal_raw_path <- "~/pvm-igm.github.io"
 redcap_sars2diag_gal_raw <- read.csv(file.path(redcap_sars2diag_gal_raw_path, paste0("REDCap_DIAGCOVID19_DATA_", Sys.Date(), ".csv")),
                    header = TRUE, sep = ",", stringsAsFactors = TRUE)
@@ -385,14 +388,13 @@ redcap_sars2diag_mun_req_epimpcr_plot
 ### {.value-box}
 
 ```{r}
+
+token_3 <- args[3]
+report_id_3 <- as.integer(args[4])
 redcap_sars2seq <- REDCapR::redcap_report(
   redcap_uri = "https://bdp.bahia.fiocruz.br/api/",
-  token = "4C641796E93F1C48BA26CE090DD0BFE8",
-  report_id = 12817)$data
-
-# redcap_sars2seq <- read.csv(file.path("C:/OneDrive/OneDrive - FIOCRUZ/Sequenciamento/BANCO_DE_DADOS",
-#                              paste0("redcap_sars2sequenciamentoDeSARS_DATA_", Sys.Date(), ".csv")),
-#                    header = TRUE, sep = ",", stringsAsFactors = TRUE)
+  token = token_3,
+  report_id = report_id_3)$data
 
 redcap_sars2seq_assay <- n_distinct(redcap_sars2seq$nome_seq)
 
@@ -478,7 +480,10 @@ redcap_sars2seq_gen_plot
 
 ```{r}
 ## https://www.epicov.org/epi3/start
-credentials <- login(username = "RKhour0", password = "pjtWGX7!")
+
+username <- args[5]
+password <- args[6]
+credentials <- login(username = username, password = password)
 
 gi_acc_id <- query(credentials = credentials, fast = TRUE,
                    location = "South America / Brazil / Bahia")
