@@ -12,11 +12,11 @@ if [[ -z $(conda env list | grep flexdashboard) ]]; then
     Rscript -e "devtools::install_github(\"Wytamma/GISAIDR\")"
 fi
 
-rm -rf $HOME/pvm-igm.github.io/REDCap_DIAGCOVID19_DATA_*.csv
+# rm -rf $HOME/pvm-igm.github.io/REDCap_DIAGCOVID19_DATA_*.csv
 
-DATA="token=${3}&content=report&format=csv&report_id=${4}&rawOrLabel=raw&rawOrLabelHeaders=raw&exportCheckboxLabel=false&returnFormat=csv"
-CURL=`which curl`
-$CURL -s -H "Content-Type: application/x-www-form-urlencoded" -H "Accept: application/json" -X POST -d $DATA https://bdp.bahia.fiocruz.br/api/ > $HOME/pvm-igm.github.io/REDCap_DIAGCOVID19_DATA_$(date +'%Y-%m-%d').csv
+# DATA="token=${3}&content=report&format=csv&report_id=${4}&rawOrLabel=raw&rawOrLabelHeaders=raw&exportCheckboxLabel=false&returnFormat=csv"
+# CURL=`which curl`
+# $CURL -s -H "Content-Type: application/x-www-form-urlencoded" -H "Accept: application/json" -X POST -d $DATA https://bdp.bahia.fiocruz.br/api/ > $HOME/pvm-igm.github.io/REDCap_DIAGCOVID19_DATA_$(date +'%Y-%m-%d').csv
 
 source activate flexdashboard
 
