@@ -1,7 +1,7 @@
 ---
 title: "Painéis de Vigilância"
 author: "Plataforma de Vigilância Molecular do Instituto Gonçalo Moniz (FIOCRUZ-BA)"
-date: "atualizado em `r Sys.Date()`"
+date: 'atualizado em `r format(Sys.time(), "%Y-%m-%d às %H:%M:%S")`'
 output:
   flexdashboard::flex_dashboard:
     vertical_layout: fill
@@ -24,7 +24,6 @@ output:
 ---
 
 ```{css}
-
 .section.sidebar {
 background-color:#FFFFFF;
 color: #000000;
@@ -42,47 +41,22 @@ color: #FFFFFF;
 .value-box .caption {
 color: #FFFFFF;
 }
-
 ```
 
 ```{r setup, include = FALSE}
-
-if(!require("fontawesome")){
-  install_version("fontawesome", version = "0.3.0", repos = "http://cran.us.r-project.org")
-library("fontawesome")}
-
-if (!require("GISAIDR")){
-  devtools::install_github("Wytamma/GISAIDR")
-library("GISAIDR")}
-
-if(!require("pacman")){
-  install.packages("pacman")
-library("pacman")}
-
-pacman::p_load(
-  devtools,
-  dplyr,
-  flexdashboard,
-  ggplot2,
-  htmltools,
-  knitr,
-  lubridate,
-  pandoc,
-  plotly,
-  plyr,
-  REDCapR,
-  reshape2)
+packages <- c("fontawesome", "devtools", "dplyr", "flexdashboard", "fontawesome", "GISAIDR", "ggplot2",
+          "htmltools", "knitr", "pandoc", "plotly", "plyr", "REDCapR", "reshape2", "rstudioapi")
+lapply(packages, library, character.only = TRUE)
 
 htmltools::tagList(fontawesome::fa_html_dependency())
 
+args <- commandArgs(TRUE)
 ```
 
 # Sidebar {.sidebar data-width=300}
 
 ```{r, echo = FALSE, out.width = "90%", fig.align = "center"}
-
 knitr::include_graphics("images/logo_fiocruz.svg")
-
 ```
 
 &nbsp;
@@ -95,40 +69,35 @@ Ricardo Khouri</i></p>
 
 # Página Inicial {#inicial data-orientation=columns}
 
-## Row 1
+## Coluna 1
 
 ### {.value-box}
 
 ```{r}
-
 flexdashboard::valueBox(
   value = "",
   caption = "SARS-CoV-2 — DIAGNÓSTICO",
   color = "#25C457",
   href = "#sars2diag")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 flexdashboard::valueBox(
   value = "",
   caption = "SARS-CoV-2 — SEQUENCIAMENTO",
   color = "#25C457",
   href = "#sars2seq")
-
 ```
 
-# Diagnóstico {#sars2diag data-orientation=rows data-navmenu="SARS-CoV-2"}
+# PVM — Diagnóstico {#sars2diag data-orientation=rows data-navmenu="SARS-CoV-2"}
 
-## Row 1
+## Coluna 1
 
 ### {.value-box}
 
 ```{r}
-
 redcap_sars2diag_igm <- REDCapR::redcap_report(
   redcap_uri = "https://bdp.bahia.fiocruz.br/api/",
   token = "33892C42D73BBCDE1187966BED3FC475",
@@ -137,14 +106,14 @@ names(redcap_sars2diag_igm) <- c("rec", "data_teste", "placa_id", "termociclador
                                     "result_pcr", "ct_b2m", "ct_orflab", "ct_covn", "ct_gene4")
 redcap_sars2diag_igm$data_teste <- format(as.Date(redcap_sars2diag_igm$data_teste, format = "%d/%m/%Y"), "%Y-%m-%d")
 
-# redcap_sars2diag <- REDCapR::redcap_report(
+# redcap_sars2diag_gal <- REDCapR::redcap_report(
 #   redcap_uri = "https://bdp.bahia.fiocruz.br/api/",
 #   token = "431A5D970FFD7855F1A5542CC1662EA5",
 #   report_id = 14362)$data
 
-# redcap_sars2diag_gal_raw <- read.csv(file.path("C:/OneDrive/OneDrive - FIOCRUZ/Sequenciamento/BANCO_DE_DADOS",
-redcap_sars2diag_gal_raw <- read.csv(file.path("/mnt/c/OneDrive/OneDrive\ -\ FIOCRUZ/Sequenciamento/BANCO_DE_DADOS/",
-                             paste0("REDCap_DIAGCOVID19_DATA_", Sys.Date(), ".csv")),
+# redcap_sars2diag_gal_raw_path <- args[1]
+redcap_sars2diag_gal_raw_path <- "~/pvm-igm.github.io"
+redcap_sars2diag_gal_raw <- read.csv(file.path(redcap_sars2diag_gal_raw_path, paste0("REDCap_DIAGCOVID19_DATA_", Sys.Date(), ".csv")),
                    header = TRUE, sep = ",", stringsAsFactors = TRUE)
 redcap_sars2diag_gal_raw <- redcap_sars2diag_gal_raw %>% mutate_all(na_if, "")
 
@@ -170,26 +139,22 @@ flexdashboard::valueBox(redcap_sars2diag_rtqpcr,
          caption = "PLACAS DE RT-qPCR",
          icon = "fa-computer",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 redcap_sars2diag_diag <- length(redcap_sars2diag$rec)
 
 flexdashboard::valueBox(redcap_sars2diag_diag, 
          caption = "AMOSTRAS TESTADAS",
          icon = "fa-barcode",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 redcap_sars2diag_tpa <- redcap_sars2diag[c("dt_recebimento", "dt_liberacao")]
 redcap_sars2diag_tpa$tpa <- as.Date(as.character(redcap_sars2diag$dt_liberacao), format="%Y-%m-%d") -
                   as.Date(as.character(redcap_sars2diag$dt_recebimento), format="%Y-%m-%d")
@@ -201,18 +166,17 @@ flexdashboard::valueBox(redcap_sars2diag_tpa_median,
          caption = "DIAS PARA LIBERAÇÃO DOS RESULTADOS",
          icon = "fa-circle-check",
          color = "#25C457")
-
 ```
 
-## Row 2
+## Coluna 2
 
 ### Distribuição dos resultados de RT-qPCR para SARS-CoV-2 por semana epidemiológica {data-width=1165}
 
 ```{r}
-
 redcap_sars2diag$epiypcr <- format(as.Date(redcap_sars2diag$data_teste), "%Y")
 redcap_sars2diag$epimpcr <- format(as.Date(redcap_sars2diag$data_teste), "%Y-%m")
-redcap_sars2diag$epiwpcr <- paste(format(as.Date(redcap_sars2diag$data_teste), "%Y"), sprintf("%02d", epiweek(redcap_sars2diag$data_teste)), sep = "-")
+redcap_sars2diag$epiwpcr <- format(as.Date(redcap_sars2diag$data_teste), "%G-%V")
+
 redcap_sars2diag$result_pcr[redcap_sars2diag$result_pcr == "Detectável"] <- "Detectado"
 redcap_sars2diag$result_pcr[redcap_sars2diag$result_pcr == "Nao Detectado"] <- "Nao detectado"
 redcap_sars2diag$result_pcr[redcap_sars2diag$result_pcr == "Não detectado"] <- "Nao detectado"
@@ -245,23 +209,21 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 redcap_sars2diag_result_epiwpcr_plot
 
 # htmlwidgets::saveWidget(as_widget(redcap_sars2diag_result_epiwpcr_plot), "redcap_sars2diag_result_epiwpcr_plot.html")
-
 ```
 
 ### Proporção de amostras SARS-CoV-2 positivas e negativas
 
 ```{r}
-
 redcap_sars2diag_result_epiypcr <- ddply(redcap_sars2diag_result, .(redcap_sars2diag_result$epiypcr, redcap_sars2diag_result$result_pcr), nrow, .drop = TRUE)
 names(redcap_sars2diag_result_epiypcr) <- c("epiypcr", "result", "freq")
 redcap_sars2diag_result_epiypcr <- mutate(redcap_sars2diag_result_epiypcr,
                                 label = ifelse(result == "Nao detectado", "SARS-CoV-2 não detectado", "SARS-CoV-2 detectado"))
 redcap_sars2diag_result_epiypcr$label2 <- paste(redcap_sars2diag_result_epiypcr$epiypcr, redcap_sars2diag_result_epiypcr$label, sep = " - ")
 
-color_label = c("#ea2f4b", "#24afdd", "#ea2f4b", "#24afdd", "#e34960", "#24afdd")
+color_label = c("#EA2F4B", "#24AFDD", "#EA2F4B", "#24AFDD", "#EA2F4B", "#24AFDD", "#EA2F4B", "#24AFDD")
 names(color_label) <- redcap_sars2diag_result_epiypcr$label
 
-color_label2 = c("#F37F9061", "#c9f2ff", "#F37F90C8", "#B2E9FB", "#EC4B63", "#6BCFEF")
+color_label2 = c("#F37F9061", "#C9F2FF", "#F37F9061", "#C9F2FF", "#F37F90C8", "#B2E9FB", "#EC4B63", "#6BCFEF")
 names(color_label2) <- redcap_sars2diag_result_epiypcr$label
 
 redcap_sars2diag_result_epiypcr_plot <- plot_ly(type = "pie", textinfo = "percent") %>%
@@ -277,15 +239,13 @@ redcap_sars2diag_result_epiypcr_plot <- plot_ly(type = "pie", textinfo = "percen
 redcap_sars2diag_result_epiypcr_plot
 
 # htmlwidgets::saveWidget(as_widget(redcap_sars2diag_result_epiypcr_plot), "redcap_sars2diag_result_epiypcr_plot.html")
-
 ```
 
-## Row 3 {.tabset}
+## Coluna 3 {.tabset}
 
 ### Amostras recebidas pela PVM distribuídas por município requisitante e semana epidemiológica
 
 ```{r}
-
 redcap_sars2diag_mun_req <- redcap_sars2diag %>% filter(!is.na(mun_req))
 redcap_sars2diag_mun_req <- ddply(redcap_sars2diag, .(redcap_sars2diag_mun_req$epimpcr, redcap_sars2diag_mun_req$epiwpcr, redcap_sars2diag_mun_req$mun_req), nrow, .drop = TRUE)
 names(redcap_sars2diag_mun_req) <- c("epimpcr", "epiwpcr", "mun_req", "freq")
@@ -348,13 +308,11 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 redcap_sars2diag_mun_req_epiwpcr_plot
 
 # htmlwidgets::saveWidget(as_widget(redcap_sars2diag_mun_req_epiwpcr_plot), "redcap_sars2diag_mun_req_epiwpcr_plot.html")
-
 ```
 
 ### Amostras recebidas pela PVM distribuídas por município requisitante e mês
 
 ```{r}
-
 # redcap_sars2diag_mun_req_epimpcr_plot <- plotly::ggplotly(dynamicTicks = TRUE,
 redcap_sars2diag_mun_req_epimpcr_plot <- plotly::ggplotly(
   ggplot() +
@@ -392,51 +350,41 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 redcap_sars2diag_mun_req_epimpcr_plot
 
 # htmlwidgets::saveWidget(as_widget(redcap_sars2diag_mun_req_plot), "redcap_sars2diag_mun_req_plot.html")
-
 ```
 
-# Diagnóstico (Storyboard) {#sars2diag-storyboard .storyboard data-navmenu="SARS-CoV-2"}
+# PVM — Diagnóstico (Storyboard) {#sars2diag-storyboard .storyboard data-navmenu="SARS-CoV-2"}
 
 ### Distribuição dos resultados de RT-qPCR para SARS-CoV-2 por semana epidemiológica
 
 ```{r}
-
 redcap_sars2diag_result_epiwpcr_plot
-
 ```
 
 ### Proporção de amostras SARS-CoV-2 positivas e negativas
 
 ```{r}
-
 redcap_sars2diag_result_epiypcr_plot
-
 ```
 
 ### Amostras recebidas pela PVM distribuídas por município requisitante e semana epidemiológica
 
 ```{r}
-
 redcap_sars2diag_mun_req_epiwpcr_plot
-
 ```
 
 ### Amostras recebidas pela PVM distribuídas por município requisitante e mês
 
 ```{r}
-
 redcap_sars2diag_mun_req_epimpcr_plot
-
 ```
 
-# Sequenciamento {#sars2seq data-orientation=rows data-navmenu="SARS-CoV-2"}
+# PVM — Sequenciamento {#sars2seq data-orientation=rows data-navmenu="SARS-CoV-2"}
 
-## Row 1
+## Coluna 1
 
 ### {.value-box}
 
 ```{r}
-
 redcap_sars2seq <- REDCapR::redcap_report(
   redcap_uri = "https://bdp.bahia.fiocruz.br/api/",
   token = "4C641796E93F1C48BA26CE090DD0BFE8",
@@ -452,43 +400,38 @@ flexdashboard::valueBox(redcap_sars2seq_assay,
          caption = "SEQUENCIAMENTOS REALIZADOS",
          icon = "fa-laptop-code",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 redcap_sars2seq_sample <- n_distinct(redcap_sars2seq$seq_id)
 
 flexdashboard::valueBox(redcap_sars2seq_sample, 
          caption = "AMOSTRAS SEQUENCIADAS",
          icon = "fa-vial-virus",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 redcap_sars2seq_gi <- sum(grepl("EPI_ISL", redcap_sars2seq$gisaid_id))
 
 flexdashboard::valueBox(redcap_sars2seq_gi, 
          caption = "GENOMAS DEPOSITADOS NO GISAID",
          icon = "fa-cloud-arrow-up",
          color = "#25C457")
-
 ```
 
-## Row 2
+## Coluna 2
 
 ### Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-
 redcap_sars2seq$epimseq <- format(as.Date(redcap_sars2seq$dt_se), "%Y-%m")
-redcap_sars2seq$epiwseq <- paste(format(as.Date(redcap_sars2seq$dt_se), "%Y"), sprintf("%02d", epiweek(redcap_sars2seq$dt_se)), sep = "-")
+redcap_sars2seq$epimseq <- format(as.Date(redcap_sars2seq$dt_se), "%Y-%m")
+redcap_sars2seq$epiwseq <- format(as.Date(redcap_sars2seq$dt_se), "%G-%V")
 
 redcap_sars2seq_filt_gi <- redcap_sars2seq %>% filter(!is.na(gisaid_id))
 
@@ -529,13 +472,11 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 redcap_sars2seq_gen_plot
 
 # htmlwidgets::saveWidget(as_widget(redcap_sars2seq_gen_plot), "redcap_sars2seq_gen_plot.html")
-
 ```
 
 ### Genomas de SARS-CoV-2 da Bahia submetidos no GISAID
 
 ```{r}
-
 ## https://www.epicov.org/epi3/start
 credentials <- login(username = "RKhour0", password = "pjtWGX7!")
 
@@ -543,7 +484,7 @@ gi_acc_id <- query(credentials = credentials, fast = TRUE,
                    location = "South America / Brazil / Bahia")
 gi_acc_id <- gi_acc_id$accession_id
 
-gi_acc_id_split <- split(gi_acc_id, ceiling(seq_along(gi_acc_id) / 1000))
+gi_acc_id_split <- split(gi_acc_id, ceiling(seq_along(gi_acc_id) / 2000))
 
 gi_raw <- data.frame()
 for (i in 1:length(gi_acc_id_split)){
@@ -552,7 +493,7 @@ for (i in 1:length(gi_acc_id_split)){
                    get_sequence = FALSE)
   gi_raw <- rbind(gi_raw, temp)}
 gi_raw$epimseq <- format(as.Date(gi_raw$date), "%Y-%m")
-gi_raw$epiwseq <- paste(format(as.Date(gi_raw$date), "%Y"), sprintf("%02d", epiweek(as.Date(gi_raw$date))), sep = "-")
+gi_raw$epiwseq <- format(as.Date(gi_raw$date), "%G-%V")
 gi_raw$length <- as.numeric(gi_raw$length)
 
 gi <- gi_raw[gi_raw$length > 25000, ]
@@ -560,6 +501,7 @@ gi <- gi_raw[gi_raw$length > 25000, ]
 ## https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-info.html
 ## 2022 Dec 25
 sc2_variants <- list(
+    "B.1" = "B.1",
     "B.1.1" = "B.1.1",
     "B.1.1.28" = "B.1.1.28",
     "B.1.1.33" = "B.1.1.33",
@@ -635,15 +577,13 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_gen_plot
 
 # htmlwidgets::saveWidget(as_widget(gi_gen_plot), "gi_gen_plot.html")
-
 ```
 
-## Row 3 {.tabset}
+## Coluna 3 {.tabset}
 
 ### Distribuição na Bahia das linhagens de SARS-CoV-2 por semana epidemiológica
 
 ```{r}
-
 gi_bahia_epiwseq <- ddply(gi, .(gi$epiwseq, gi$oms), nrow, .drop = FALSE)
 names(gi_bahia_epiwseq) <- c("epiwseq", "variants", "freq")
 
@@ -656,7 +596,8 @@ gi_bahia_epiwseq_plot <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1.1" = "#FB6B5B",
+    "B.1" = "#FF5744",
+    "B.1.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
     "B.1.1.33" = "#FD9EA2",
     "VBM: Alpha" = "#DF2A8E",
@@ -681,13 +622,11 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_bahia_epiwseq_plot
 
 # htmlwidgets::saveWidget(as_widget(gi_bahia_epiwseq_plot), "gi_bahia_epimseq_plot.html")
-
 ```
 
-### Salvador
+### Distribuição em Salvador (BA)
 
 ```{r}
-
 gi_salvador <- filter(gi, grepl("salvador", location, ignore.case = TRUE))
 
 gi_salvador_epiwseq <- ddply(gi_salvador, .(gi_salvador$epiwseq, gi_salvador$oms), nrow, .drop = FALSE)
@@ -702,7 +641,8 @@ gi_salvador_epiwseq <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1.1" = "#FB6B5B",
+    "B.1" = "#FF5744",
+    "B.1.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
     "B.1.1.33" = "#FD9EA2",
     "VBM: Alpha" = "#DF2A8E",
@@ -727,13 +667,11 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_salvador_epiwseq
 
 # htmlwidgets::saveWidget(as_widget(gi_salvador_epiwseq), "gi_salvador_epiwseq.html")
-
 ```
 
-### Irecê
+### Distribuição em Irecê (BA)
 
 ```{r}
-
 gi_irece <- filter(gi, grepl("irece", location, ignore.case = TRUE))
 
 gi_irece_epiwseq <- ddply(gi_irece, .(gi_irece$epiwseq, gi_irece$oms), nrow, .drop = FALSE)
@@ -748,7 +686,8 @@ gi_irece_epiwseq_plot <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1.1" = "#FB6B5B",
+    "B.1" = "#FF5744",
+    "B.1.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
     "B.1.1.33" = "#FD9EA2",
     "VBM: Alpha" = "#DF2A8E",
@@ -773,10 +712,9 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_irece_epiwseq_plot
 
 # htmlwidgets::saveWidget(as_widget(gi_irece_epiwseq_plot), "gi_irece_epiwseq_plot.html")
-
 ```
 
-# Sequenciamento (Storyboard) {#sars2seq-storyboard .storyboard data-navmenu="SARS-CoV-2"}
+# PVM — Sequenciamento (Storyboard) {#sars2seq-storyboard .storyboard data-navmenu="SARS-CoV-2"}
 
 ### Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
@@ -810,12 +748,11 @@ gi_irece_epiwseq_plot
 
 # HSR — Sequenciamento {#hsr data-orientation=rows data-navmenu="SARS-CoV-2"}
 
-## Row 1
+## Coluna 1
 
 ### {.value-box}
 
 ```{r}
-
 hsr <- redcap_sars2seq %>% filter(redcap_sars2seq$req_sequenc == "HSR")
 
 hsr_seq <- n_distinct(hsr$nome_seq)
@@ -824,41 +761,35 @@ flexdashboard::valueBox(hsr_seq,
          caption = "SEQUENCIAMENTOS REALIZADOS",
          icon = "fa-laptop-code",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 hsr_sample <- n_distinct(hsr$seq_id)
 
 flexdashboard::valueBox(hsr_sample, 
          caption = "AMOSTRAS SEQUENCIADAS",
          icon = "fa-solid fa-vial-virus",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 hsr_gi <- sum(grepl("EPI_ISL", hsr$gisaid_id))
 
 flexdashboard::valueBox(hsr_gi, 
          caption = "GENOMAS DEPOSITADOS NO GISAID",
          icon = "fa-cloud-arrow-up",
          color = "#25C457")
-
 ```
 
-## Row 2
+## Coluna 2
 
 ### Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-
 hsr_filt_gi <- hsr %>% filter(!is.na(gisaid_id))
 
 hsr_filt_nogi <- hsr %>% filter(is.na(gisaid_id))
@@ -897,13 +828,11 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 hsr_gen_plot
 
 # htmlwidgets::saveWidget(as_widget(hsr_gen_plot), "hsr_gen_plot.html")
-
 ```
 
 ### Genomas de SARS-CoV-2 da Bahia submetidos no GISAID
 
 ```{r}
-
 gi_hsr <- filter(gi, grepl("São Rafael|Sao Rafael", originating_lab, ignore.case = TRUE))
 
 gi_hsr_pvm <- filter(gi_hsr, grepl("FIOCRUZ", submitting_lab, ignore.case = TRUE))
@@ -949,15 +878,13 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_hsr_gen_plot
 
 # htmlwidgets::saveWidget(as_widget(gi_hsr_gen_plot), "gi_hsr_gen_plot.html")
-
 ```
 
-## Row 3 {.tabset}
+## Coluna 3 {.tabset}
 
-### Distribuição das linhagens de SARS-CoV-2 por semana epidemiológica
+### Distribuição na Bahia das linhagens de SARS-CoV-2 por semana epidemiológica
 
 ```{r}
-
 gi_hsr_epiwseq <- ddply(gi_hsr, .(gi_hsr$epiwseq, gi_hsr$oms), nrow, .drop = FALSE)
 names(gi_hsr_epiwseq) <- c("epiwseq", "variants", "freq")
 
@@ -970,7 +897,8 @@ gi_hsr_epiwseq_plot <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1.1" = "#FB6B5B",
+    "B.1" = "#FF5744",
+    "B.1.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
     "B.1.1.33" = "#FD9EA2",
     "VBM: Alpha" = "#DF2A8E",
@@ -995,7 +923,6 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_hsr_epiwseq_plot
 
 # htmlwidgets::saveWidget(as_widget(gi_hsr_epiwseq_plot), "gi_hsr_epiwseq_plot.html")
-
 ```
 
 # HSR — Sequenciamento (Storyboard) {#sars2seq-hsr-storyboard .storyboard data-navmenu="SARS-CoV-2"}
@@ -1003,35 +930,28 @@ gi_hsr_epiwseq_plot
 ### HSR - Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-
 hsr_gen_plot
-
 ```
 
 ### HSR - Genomas de SARS-CoV-2 da Bahia submetidos no GISAID
 
 ```{r}
-
 gi_hsr_gen_plot
-
 ```
 
-### HSR - Distribuição das linhagens de SARS-CoV-2 por semana epidemiológica
+### HSR - Distribuição na Bahia das linhagens de SARS-CoV-2 por semana epidemiológica
 
 ```{r}
-
 gi_hsr_epiwseq_plot
-
 ```
 
 # LabCov — Sequenciamento {#labcov data-orientation=rows data-navmenu="SARS-CoV-2"}
 
-## Row 1
+## Coluna 1
 
 ### {.value-box}
 
 ```{r}
-
 labcov <- redcap_sars2seq %>% filter(redcap_sars2seq$req_sequenc == "LABCOV")
 
 labcov_seq <- n_distinct(labcov$nome_seq)
@@ -1040,41 +960,35 @@ flexdashboard::valueBox(labcov_seq,
          caption = "SEQUENCIAMENTOS REALIZADOS",
          icon = "fa-laptop-code",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 labcov_sample <- n_distinct(labcov$seq_id)
 
 flexdashboard::valueBox(labcov_sample, 
          caption = "AMOSTRAS SEQUENCIADAS",
          icon = "fa-solid fa-vial-virus",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 labcov_gi <- sum(grepl("EPI_ISL", labcov$gisaid_id))
 
 flexdashboard::valueBox(labcov_gi, 
          caption = "GENOMAS DEPOSITADOS NO GISAID",
          icon = "fa-cloud-arrow-up",
          color = "#25C457")
-
 ```
 
-## Row 2
+## Coluna 2
 
 ### Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-
 labcov_filt_gi <- labcov %>% filter(!is.na(gisaid_id))
 
 labcov_filt_nogi <- labcov %>% filter(is.na(gisaid_id))
@@ -1113,13 +1027,11 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 labcov_gen_plot
 
 # htmlwidgets::saveWidget(as_widget(labcov_gen_plot), "labcov_gen_plot.html")
-
 ```
 
 ### Genomas de SARS-CoV-2 da Bahia submetidos no GISAID
 
 ```{r}
-
 gi_labcov <- filter(gi, grepl("LabCoV", originating_lab, ignore.case = TRUE))
 
 gi_labcov_gen <- count(gi_labcov$epimseq)
@@ -1146,15 +1058,13 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_labcov_gen_plot
 
 # htmlwidgets::saveWidget(as_widget(gi_labcov_gen_plot), "gi_labcov_gen_plot.html")
-
 ```
 
-## Row 3 {.tabset}
+## Coluna 3 {.tabset}
 
-### Distribuição das linhagens de SARS-CoV-2 por semana epidemiológica
+### Distribuição na Bahia das linhagens de SARS-CoV-2 por semana epidemiológica
 
 ```{r}
-
 gi_labcov_epiwseq <- ddply(gi_labcov, .(gi_labcov$epiwseq, gi_labcov$oms), nrow, .drop = FALSE)
 names(gi_labcov_epiwseq) <- c("epiwseq", "variants", "freq")
 
@@ -1167,7 +1077,8 @@ gi_labcov_epiwseq <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1.1" = "#FB6B5B",
+    "B.1" = "#FF5744",
+    "B.1.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
     "B.1.1.33" = "#FD9EA2",
     "VBM: Alpha" = "#DF2A8E",
@@ -1192,7 +1103,6 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_labcov_epiwseq
 
 # htmlwidgets::saveWidget(as_widget(gi_labcov_epiwseq), "gi_labcov_epiwseq.html")
-
 ```
 
 # LabCov — Sequenciamento (Storyboard) {#sars2seq-labcov-storyboard .storyboard data-navmenu="SARS-CoV-2"}
@@ -1200,35 +1110,28 @@ gi_labcov_epiwseq
 ### LabCoV - Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-
 labcov_gen_plot
-
 ```
 
 ### LabCoV - Genomas de SARS-CoV-2 da Bahia submetidos no GISAID
 
 ```{r}
-
 gi_labcov_gen_plot
-
 ```
 
-### LabCoV - Distribuição das linhagens de SARS-CoV-2 por semana epidemiológica
+### LabCoV - Distribuição na Bahia das linhagens de SARS-CoV-2 por semana epidemiológica
 
 ```{r}
-
 gi_labcov_epiwseq
-
 ```
 
 # LACEB-BA — Sequenciamento {#lacen-ba data-orientation=rows data-navmenu="SARS-CoV-2"}
 
-## Row 1
+## Coluna 1
 
 ### {.value-box}
 
 ```{r}
-
 lacen_ba <- redcap_sars2seq %>% filter(redcap_sars2seq$req_sequenc == "LACEN-BA")
 
 lacen_ba_seq <- n_distinct(lacen_ba$nome_seq)
@@ -1237,41 +1140,35 @@ flexdashboard::valueBox(lacen_ba_seq,
          caption = "SEQUENCIAMENTOS REALIZADOS",
          icon = "fa-laptop-code",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 lacen_ba_sample <- n_distinct(lacen_ba$seq_id)
 
 flexdashboard::valueBox(lacen_ba_sample, 
          caption = "AMOSTRAS SEQUENCIADAS",
          icon = "fa-solid fa-vial-virus",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 lacen_ba_gi <- sum(grepl("EPI_ISL", lacen_ba$gisaid_id))
 
 flexdashboard::valueBox(lacen_ba_gi, 
          caption = "GENOMAS DEPOSITADOS NO GISAID",
          icon = "fa-cloud-arrow-up",
          color = "#25C457")
-
 ```
 
-## Row 2
+## Coluna 2
 
 ### Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-
 lacen_ba_filt_gi <- lacen_ba %>% filter(!is.na(gisaid_id))
 
 lacen_ba_filt_nogi <- lacen_ba %>% filter(is.na(gisaid_id))
@@ -1310,13 +1207,11 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 lacen_ba_gen_plot
 
 # htmlwidgets::saveWidget(as_widget(lacen_ba_gen_plot), "lacen_ba_gen_plot.html")
-
 ```
 
 ### Genomas de SARS-CoV-2 da Bahia submetidos no GISAID
 
 ```{r}
-
 gi_lacen_ba <- filter(gi, grepl("LACEN/BA|LACEN - Salvador|LACEN -Bahia|LACEN-BA", originating_lab, ignore.case = TRUE))
 
 gi_lacen_ba_fiocruz <- filter(gi_lacen_ba, grepl("FIOCRUZ", submitting_lab, ignore.case = TRUE))
@@ -1362,15 +1257,13 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_lacen_ba_gen_plot
 
 # htmlwidgets::saveWidget(as_widget(gi_lacen_ba_gen_plot), "gi_lacen_ba_gen_plot.html")
-
 ```
 
-## Row 3 {.tabset}
+## Coluna 3 {.tabset}
 
-### Distribuição das linhagens de SARS-CoV-2 por semana epidemiológica
+### Distribuição na Bahia das linhagens de SARS-CoV-2 por semana epidemiológica
 
 ```{r}
-
 gi_lacen_ba_epiwseq <- ddply(gi_lacen_ba, .(gi_lacen_ba$epiwseq, gi_lacen_ba$oms), nrow, .drop = FALSE)
 names(gi_lacen_ba_epiwseq) <- c("epiwseq", "variants", "freq")
 
@@ -1383,7 +1276,8 @@ gi_lacen_ba_epiwseq_plot <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1.1" = "#FB6B5B",
+    "B.1" = "#FF5744",
+    "B.1.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
     "B.1.1.33" = "#FD9EA2",
     "VBM: Alpha" = "#DF2A8E",
@@ -1408,7 +1302,6 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_lacen_ba_epiwseq_plot
 
 # htmlwidgets::saveWidget(as_widget(gi_lacen_ba_epiwseq_plot), "gi_lacen_ba_epiwseq_plot.html")
-
 ```
 
 # LACEB-BA — Sequenciamento (Storyboard) {#sars2seq-lacen-ba-storyboard .storyboard data-navmenu="SARS-CoV-2"}
@@ -1416,35 +1309,28 @@ gi_lacen_ba_epiwseq_plot
 ### LACEN-BA - Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-
 lacen_ba_gen_plot
-
 ```
 
 ### LACEN-BA - Genomas de SARS-CoV-2 da Bahia submetidos no GISAID
 
 ```{r}
-
 gi_lacen_ba_gen_plot
-
 ```
 
-### LACEN-BA - Distribuição das linhagens de SARS-CoV-2 por semana epidemiológica
+### LACEN-BA - Distribuição na Bahia das linhagens de SARS-CoV-2 por semana epidemiológica
 
 ```{r}
-
 gi_lacen_ba_epiwseq_plot
-
 ```
 
 # LJC — Sequenciamento {#ljc data-orientation=rows data-navmenu="SARS-CoV-2"}
 
-## Row 1
+## Coluna 1
 
 ### {.value-box}
 
 ```{r}
-
 ljc <- redcap_sars2seq %>% filter(redcap_sars2seq$req_sequenc == "LJC")
 
 ljc_seq <- n_distinct(ljc$nome_seq)
@@ -1453,41 +1339,35 @@ flexdashboard::valueBox(ljc_seq,
          caption = "SEQUENCIAMENTOS REALIZADOS",
          icon = "fa-laptop-code",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 ljc_sample <- n_distinct(ljc$seq_id)
 
 flexdashboard::valueBox(ljc_sample, 
          caption = "AMOSTRAS SEQUENCIADAS",
          icon = "fa-solid fa-vial-virus",
          color = "#25C457")
-
 ```
 
 ### {.value-box}
 
 ```{r}
-
 ljc_gi <- sum(grepl("EPI_ISL", ljc$gisaid_id))
 
 flexdashboard::valueBox(ljc_gi, 
          caption = "GENOMAS DEPOSITADOS NO GISAID",
          icon = "fa-cloud-arrow-up",
          color = "#25C457")
-
 ```
 
-## Row 2
+## Coluna 2
 
 ### LJC - Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-
 ljc_filt_gi <- ljc %>% filter(!is.na(gisaid_id))
 
 ljc_filt_nogi <- ljc %>% filter(is.na(gisaid_id))
@@ -1526,13 +1406,11 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 ljc_gen_plot
 
 # htmlwidgets::saveWidget(as_widget(ljc_gen_plot), "ljc_gen_plot.html")
-
 ```
 
 ### LJC - Genomas de SARS-CoV-2 da Bahia submetidos no GISAID
 
 ```{r}
-
 gi_ljc <- filter(gi, grepl("LJC", originating_lab, ignore.case = TRUE))
 
 gi_ljc_gen <- count(gi_ljc$epimseq)
@@ -1559,15 +1437,13 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_ljc_gen_plot
 
 # htmlwidgets::saveWidget(as_widget(gi_ljc_gen_plot), "gi_ljc_gen_plot.html")
-
 ```
 
-## Row 3 {.tabset}
+## Coluna 3 {.tabset}
 
-### LabCoV - Distribuição das linhagens de SARS-CoV-2 por semana epidemiológica
+### LabCoV - Distribuição na Bahia das linhagens de SARS-CoV-2 por semana epidemiológica
 
 ```{r}
-
 gi_ljc_epiwseq <- ddply(gi_ljc, .(gi_ljc$epiwseq, gi_ljc$oms), nrow, .drop = FALSE)
 names(gi_ljc_epiwseq) <- c("epiwseq", "variants", "freq")
 
@@ -1580,7 +1456,8 @@ gi_ljc_epiwseq_plot <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1.1" = "#FB6B5B",
+    "B.1" = "#FF5744",
+    "B.1.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
     "B.1.1.33" = "#FD9EA2",
     "VBM: Alpha" = "#DF2A8E",
@@ -1605,7 +1482,6 @@ layout(legend = list(bgcolor = "#FFFFFF80", bordercolor = "#B3B3B3", borderwidth
 gi_ljc_epiwseq_plot
 
 # htmlwidgets::saveWidget(as_widget(gi_ljc_epiwseq_plot), "gi_ljc_epiwseq_plot.html")
-
 ```
 
 # LJC — Sequenciamento (Storyboard) {#sars2seq-ljc-storyboard .storyboard data-navmenu="SARS-CoV-2"}
@@ -1613,23 +1489,17 @@ gi_ljc_epiwseq_plot
 ### LJC - Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-
 ljc_gen_plot
-
 ```
 
 ### LJC - Genomas de SARS-CoV-2 da Bahia submetidos no GISAID
 
 ```{r}
-
 gi_ljc_gen_plot
-
 ```
 
-### LJC - Distribuição das linhagens de SARS-CoV-2 por semana epidemiológica
+### LJC - Distribuição na Bahia das linhagens de SARS-CoV-2 por semana epidemiológica
 
 ```{r}
-
 gi_ljc_epiwseq_plot
-
 ```
