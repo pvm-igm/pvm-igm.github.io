@@ -2,6 +2,15 @@
 title: "Painéis de Vigilância"
 author: "Plataforma de Vigilância Molecular do Instituto Gonçalo Moniz (FIOCRUZ-BA)"
 date: 'atualizado em `r format(Sys.time(), "%Y-%m-%d às %H:%M:%S")`'
+params:
+  token_redcap_sars2diag_igm: 0
+  report_redcap_sars2diag_igm: 0
+  token_redcap_sars2diag_gal: 0
+  report_redcap_sars2diag_gal: 0
+  token_redcap_sars2seq: 0
+  report_redcap_sars2seq: 0
+  gisaid_username: 0
+  gisaid_password: 0
 output:
   flexdashboard::flex_dashboard:
     vertical_layout: fill
@@ -99,10 +108,10 @@ flexdashboard::valueBox(
 
 ```{r}
 redcap_sars2diag_igm <- POST("https://bdp.bahia.fiocruz.br/api/",
-                             body = list(token = "token",
+                             body = list(token = params$token_redcap_sars2diag_igm,
                                          content = "report",
                                          format = "csv",
-                                         report_id = "report_id",
+                                         report_id = as.integer(params$report_redcap_sars2diag_igm),
                                          rawOrLabel = "raw",
                                          rawOrLabelHeaders = "raw",
                                          exportCheckboxLabel = "true",
@@ -114,10 +123,10 @@ names(redcap_sars2diag_igm) <- c("rec", "data_teste", "placa_id", "termociclador
 redcap_sars2diag_igm$data_teste <- format(as.Date(redcap_sars2diag_igm$data_teste, format = "%d/%m/%Y"), "%Y-%m-%d")
 
 redcap_sars2diag_gal <- POST("https://bdp.bahia.fiocruz.br/api/",
-                             body = list(token = "token",
+                             body = list(token = params$token_redcap_sars2diag_gal,
                                          content = "report",
                                          format = "csv",
-                                         report_id = "report_id",
+                                         report_id = as.integer(params$report_redcap_sars2diag_gal),
                                          rawOrLabel = "raw",
                                          rawOrLabelHeaders = "raw",
                                          exportCheckboxLabel = "true",
@@ -400,10 +409,10 @@ redcap_sars2diag_mun_req_epimpcr_plot
 
 ```{r}
 redcap_sars2seq <- POST("https://bdp.bahia.fiocruz.br/api/",
-                             body = list(token = "token",
+                             body = list(token = params$token_redcap_sars2seq,
                                          content = "report",
                                          format = "csv",
-                                         report_id = "report_id",
+                                         report_id = as.integer(params$report_redcap_sars2seq),
                                          rawOrLabel = "raw",
                                          rawOrLabelHeaders = "raw",
                                          exportCheckboxLabel = "true",
@@ -497,7 +506,7 @@ redcap_sars2seq_gen_plot
 ```{r}
 ## https://www.epicov.org/epi3/start
 
-credentials <- login(username = "username", password = "password")
+credentials <- login(username = params$gisaid_username, password = params$gisaid_password)
 
 gi_acc_id <- query(credentials = credentials, fast = TRUE,
                    location = "South America / Brazil / Bahia")
@@ -617,7 +626,7 @@ gi_bahia_epiwseq_plot <- plotly::ggplotly(
   scale_fill_manual(values = c(
     "B.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
-    "B.1.1.33" = "#FD9EA2",
+    "B.1.1.33" = "#FF5744",
     "VBM: Alpha" = "#DF2A8E",
     "VBM: Zeta" = "#872B15",
     "VBM: Gamma" = "#11961B",
@@ -629,7 +638,7 @@ gi_bahia_epiwseq_plot <- plotly::ggplotly(
     "VOC: Omicron (BQ.1)" = "#FF7F07",
     "VOC: Omicron (XBB)" = "#36DF3B",
     "VOC: Omicron (BE.9)" = "#73FBFD",
-    "VOC: Omicron (BE.10)" = "#FF5744",
+    "VOC: Omicron (BE.10)" = "#FD9EA2",
     "VOC: Omicron (DL.1)" = "#B50B0B",
     "Others" = "#999999")) + theme_light() +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
@@ -660,10 +669,9 @@ gi_salvador_epiwseq <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1" = "#FF5744",
-    "B.1.1" = "#FA9084",
+    "B.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
-    "B.1.1.33" = "#FD9EA2",
+    "B.1.1.33" = "#FF5744",
     "VBM: Alpha" = "#DF2A8E",
     "VBM: Zeta" = "#872B15",
     "VBM: Gamma" = "#11961B",
@@ -675,6 +683,7 @@ gi_salvador_epiwseq <- plotly::ggplotly(
     "VOC: Omicron (BQ.1)" = "#FF7F07",
     "VOC: Omicron (XBB)" = "#36DF3B",
     "VOC: Omicron (BE.9)" = "#73FBFD",
+    "VOC: Omicron (BE.10)" = "#FD9EA2",
     "VOC: Omicron (DL.1)" = "#B50B0B",
     "Others" = "#999999")) + theme_light() +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
@@ -705,10 +714,9 @@ gi_irece_epiwseq_plot <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1" = "#FF5744",
-    "B.1.1" = "#FA9084",
+    "B.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
-    "B.1.1.33" = "#FD9EA2",
+    "B.1.1.33" = "#FF5744",
     "VBM: Alpha" = "#DF2A8E",
     "VBM: Zeta" = "#872B15",
     "VBM: Gamma" = "#11961B",
@@ -720,6 +728,7 @@ gi_irece_epiwseq_plot <- plotly::ggplotly(
     "VOC: Omicron (BQ.1)" = "#FF7F07",
     "VOC: Omicron (XBB)" = "#36DF3B",
     "VOC: Omicron (BE.9)" = "#73FBFD",
+    "VOC: Omicron (BE.10)" = "#FD9EA2",
     "VOC: Omicron (DL.1)" = "#B50B0B",
     "Others" = "#999999")) + theme_light() +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
@@ -916,10 +925,9 @@ gi_hsr_epiwseq_plot <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1" = "#FF5744",
-    "B.1.1" = "#FA9084",
+    "B.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
-    "B.1.1.33" = "#FD9EA2",
+    "B.1.1.33" = "#FF5744",
     "VBM: Alpha" = "#DF2A8E",
     "VBM: Zeta" = "#872B15",
     "VBM: Gamma" = "#11961B",
@@ -931,6 +939,7 @@ gi_hsr_epiwseq_plot <- plotly::ggplotly(
     "VOC: Omicron (BQ.1)" = "#FF7F07",
     "VOC: Omicron (XBB)" = "#36DF3B",
     "VOC: Omicron (BE.9)" = "#73FBFD",
+    "VOC: Omicron (BE.10)" = "#FD9EA2",
     "VOC: Omicron (DL.1)" = "#B50B0B",
     "Others" = "#999999")) + theme_light() +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
@@ -1096,10 +1105,9 @@ gi_labcov_epiwseq <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1" = "#FF5744",
-    "B.1.1" = "#FA9084",
+    "B.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
-    "B.1.1.33" = "#FD9EA2",
+    "B.1.1.33" = "#FF5744",
     "VBM: Alpha" = "#DF2A8E",
     "VBM: Zeta" = "#872B15",
     "VBM: Gamma" = "#11961B",
@@ -1111,6 +1119,7 @@ gi_labcov_epiwseq <- plotly::ggplotly(
     "VOC: Omicron (BQ.1)" = "#FF7F07",
     "VOC: Omicron (XBB)" = "#36DF3B",
     "VOC: Omicron (BE.9)" = "#73FBFD",
+    "VOC: Omicron (BE.10)" = "#FD9EA2",
     "VOC: Omicron (DL.1)" = "#B50B0B",
     "Others" = "#999999")) + theme_light() +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
@@ -1295,10 +1304,9 @@ gi_lacen_ba_epiwseq_plot <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1" = "#FF5744",
-    "B.1.1" = "#FA9084",
+    "B.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
-    "B.1.1.33" = "#FD9EA2",
+    "B.1.1.33" = "#FF5744",
     "VBM: Alpha" = "#DF2A8E",
     "VBM: Zeta" = "#872B15",
     "VBM: Gamma" = "#11961B",
@@ -1310,6 +1318,7 @@ gi_lacen_ba_epiwseq_plot <- plotly::ggplotly(
     "VOC: Omicron (BQ.1)" = "#FF7F07",
     "VOC: Omicron (XBB)" = "#36DF3B",
     "VOC: Omicron (BE.9)" = "#73FBFD",
+    "VOC: Omicron (BE.10)" = "#FD9EA2",
     "VOC: Omicron (DL.1)" = "#B50B0B",
     "Others" = "#999999")) + theme_light() +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
@@ -1475,10 +1484,9 @@ gi_ljc_epiwseq_plot <- plotly::ggplotly(
   scale_x_discrete(expand = expansion(0, 0)) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
   scale_fill_manual(values = c(
-    "B.1" = "#FF5744",
-    "B.1.1" = "#FA9084",
+    "B.1" = "#FA9084",
     "B.1.1.28" = "#E49074",
-    "B.1.1.33" = "#FD9EA2",
+    "B.1.1.33" = "#FF5744",
     "VBM: Alpha" = "#DF2A8E",
     "VBM: Zeta" = "#872B15",
     "VBM: Gamma" = "#11961B",
@@ -1490,6 +1498,7 @@ gi_ljc_epiwseq_plot <- plotly::ggplotly(
     "VOC: Omicron (BQ.1)" = "#FF7F07",
     "VOC: Omicron (XBB)" = "#36DF3B",
     "VOC: Omicron (BE.9)" = "#73FBFD",
+    "VOC: Omicron (BE.10)" = "#FD9EA2",
     "VOC: Omicron (DL.1)" = "#B50B0B",
     "Others" = "#999999")) + theme_light() +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
