@@ -34,11 +34,8 @@ output:
 
 ```{css}
 .section.sidebar {background-color:#FFFFFF; color: #000000;}
-
 .storyboard-nav .sbframelist ul li.active {background-color: #25C457; color: #FFFFFF;}
-
 .value-box .value {color: #FFFFFF;}
-
 .value-box .caption {color: #FFFFFF;}
 ```
 
@@ -130,7 +127,7 @@ redcap_sars2diag_gal_1 <- redcap_sars2diag_gal[c("rec", "requisitante", "dt_cole
                                                  "placa_id", "termociclador", "kit_pcr", "lote_pcr",
                                                  "result_pcr", "ct_b2m", "ct_orflab", "ct_covn",
                                                  "ct_gene4")]
-redcap_sars2diag_gal_1 <- redcap_sars2diag_gal_1[redcap_sars2diag_gal1$data_teste != "", ]
+redcap_sars2diag_gal_1 <- redcap_sars2diag_gal_1[redcap_sars2diag_gal_1$data_teste != "", ]
 
 redcap_sars2diag_gal_2 <- redcap_sars2diag_gal[c("rec", "requisitante", "dt_coleta", "mun_req", "idade",
                                                  "sexo", "dt_recebimento", "dt_liberacao", "data_teste_val",
@@ -141,7 +138,7 @@ names(redcap_sars2diag_gal_2) <- c("rec", "requisitante", "dt_coleta", "mun_req"
                                    "dt_recebimento", "dt_liberacao", "data_teste", "placa_id",
                                    "termociclador", "kit_pcr", "lote_pcr", "result_pcr", "ct_b2m",
                                    "ct_orflab", "ct_covn")
-redcap_sars2diag_gal_2 <- redcap_sars2diag_gal_2[redcap_sars2diag_gal2$data_teste != "", ]
+redcap_sars2diag_gal_2 <- redcap_sars2diag_gal_2[redcap_sars2diag_gal_2$data_teste != "", ]
 
 redcap_sars2diag <- Reduce(function(x, y) merge(x, y, all = TRUE), list(redcap_sars2diag_igm, redcap_sars2diag_gal_1, redcap_sars2diag_gal_2))
 redcap_sars2diag <- redcap_sars2diag[!is.na(as.numeric(as.character(redcap_sars2diag$rec))), ]
