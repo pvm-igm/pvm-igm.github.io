@@ -223,8 +223,7 @@ redcap_sars2diag_result_epiwpcr_plot
 ### Proporção de amostras SARS-CoV-2 positivas e negativas
 
 ```{r}
-redcap_sars2diag_result_epiypcr <- ddply(redcap_sars2diag_result, .(redcap_sars2diag_result$epiypcr,
-                                                                    redcap_sars2diag_result$result_pcr), nrow, .drop = TRUE)
+redcap_sars2diag_result_epiypcr <- ddply(redcap_sars2diag_result, .(redcap_sars2diag_result$epiypcr, redcap_sars2diag_result$result_pcr), nrow, .drop = TRUE)
 names(redcap_sars2diag_result_epiypcr) <- c("epiypcr", "result", "freq")
 redcap_sars2diag_result_epiypcr <- mutate(redcap_sars2diag_result_epiypcr,
                                           label = ifelse(result == "Nao detectado", "SARS-CoV-2 não detectado", "SARS-CoV-2 detectado"))
@@ -234,7 +233,7 @@ redcap_sars2diag_result_epiypcr$label2 <- paste(redcap_sars2diag_result_epiypcr$
 color_label = c("#EA2F4B", "#24AFDD", "#EA2F4B", "#24AFDD", "#EA2F4B", "#24AFDD", "#EA2F4B", "#24AFDD")
 names(color_label) <- redcap_sars2diag_result_epiypcr$label
 
-color_label2 = c("#F37F9061", "#C9F2FF", "#F37F9061", "#C9F2FF", "#F37F90C8", "#B2E9FB", "#6BCFEF")
+color_label2 = c("#F37F9061", "#C9F2FF", "#F37F9061", "#C9F2FF", "#F37F90C8", "#B2E9FB", "#6BCFEF", "#EC4B63")
 names(color_label2) <- redcap_sars2diag_result_epiypcr$label
 
 redcap_sars2diag_result_epiypcr_plot <- plot_ly(type = "pie", textinfo = "percent") %>%
@@ -492,12 +491,10 @@ gi_raw$length <- as.numeric(gi_raw$length)
 
 gi <- gi_raw[gi_raw$length > 25000, ]
 
-## https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-info.html
+## https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
 ## 2022 Dec 25
 sc2_variants <- list(
-  "B.1" = c("B.1", "B.1.1"),
-  "B.1.1.28" = "B.1.1.28",
-  "B.1.1.33" = "B.1.1.33",
+  "Non-VBM/Non-VOC" = c("B.1", "B.1.1", "B.1.1.28", "B.1.1.33"),
   "VBM: Alpha" = c("B.1.1.7", unique(gi$pangolin_lineage[grep("^Q\\.", gi$pangolin_lineage)])),
   # "VBM: Beta" = c("B.1.351", unique(gi$pangolin_lineage[grep("^B.1.351\\.", gi$pangolin_lineage)])),
   "VBM: Gamma" = c("P.1", unique(gi$pangolin_lineage[grep("^P\\.1\\.", gi$pangolin_lineage)])),
@@ -581,22 +578,20 @@ gi_bahia_epiwseq_plot <- plotly::ggplotly(
     scale_x_discrete(expand = expansion(0, 0)) +
     scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
     scale_fill_manual(values = c(
-      "B.1" = "#FA9084",
-      "B.1.1.28" = "#E49074",
-      "B.1.1.33" = "#FF5744",
-      "VBM: Alpha" = "#DF2A8E",
-      "VBM: Zeta" = "#872B15",
-      "VBM: Gamma" = "#11961B",
-      "VBM: Delta" = "#6F0F84",
-      "VOC: Omicron (BA.1)" = "#EECB3A",
-      "VOC: Omicron (BA.2)" = "#FE0B12",
-      "VOC: Omicron (BA.4)" = "#D860CF",
-      "VOC: Omicron (BA.5)" = "#2F67CD",
-      "VOC: Omicron (BQ.1)" = "#FF7F07",
-      "VOC: Omicron (XBB)" = "#36DF3B",
-      "VOC: Omicron (BE.9)" = "#73FBFD",
-      "VOC: Omicron (BE.10)" = "#FD9EA2",
-      "VOC: Omicron (DL.1)" = "#B50B0B",
+      "Non-VBM/Non-VOC" = "#FD9EA2",
+      "VBM: Alpha" = "#D860CF",
+      "VBM: Zeta" = "#FF5744",
+      "VBM: Gamma" = "#FE0B12",
+      "VBM: Delta" = "#FF7F07",
+      "VOC: Omicron (BA.1)" = "#36DF3B",
+      "VOC: Omicron (BA.2)" = "#2F67CD",
+      "VOC: Omicron (BA.4)" = "#CA150C",
+      "VOC: Omicron (BA.5)" = "#11961B",
+      "VOC: Omicron (BQ.1)" = "#EECB3A",
+      "VOC: Omicron (XBB)" = "#872B15",
+      "VOC: Omicron (BE.9)" = "#4F4F4F",
+      "VOC: Omicron (BE.10)" = "#52CAFD",
+      "VOC: Omicron (DL.1)" = "#BD19E1",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -621,22 +616,20 @@ gi_salvador_epiwseq <- plotly::ggplotly(
     scale_x_discrete(expand = expansion(0, 0)) +
     scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
     scale_fill_manual(values = c(
-      "B.1" = "#FA9084",
-      "B.1.1.28" = "#E49074",
-      "B.1.1.33" = "#FF5744",
-      "VBM: Alpha" = "#DF2A8E",
-      "VBM: Zeta" = "#872B15",
-      "VBM: Gamma" = "#11961B",
-      "VBM: Delta" = "#6F0F84",
-      "VOC: Omicron (BA.1)" = "#EECB3A",
-      "VOC: Omicron (BA.2)" = "#FE0B12",
-      "VOC: Omicron (BA.4)" = "#D860CF",
-      "VOC: Omicron (BA.5)" = "#2F67CD",
-      "VOC: Omicron (BQ.1)" = "#FF7F07",
-      "VOC: Omicron (XBB)" = "#36DF3B",
-      "VOC: Omicron (BE.9)" = "#73FBFD",
-      "VOC: Omicron (BE.10)" = "#FD9EA2",
-      "VOC: Omicron (DL.1)" = "#B50B0B",
+      "Non-VBM/Non-VOC" = "#FD9EA2",
+      "VBM: Alpha" = "#D860CF",
+      "VBM: Zeta" = "#FF5744",
+      "VBM: Gamma" = "#FE0B12",
+      "VBM: Delta" = "#FF7F07",
+      "VOC: Omicron (BA.1)" = "#36DF3B",
+      "VOC: Omicron (BA.2)" = "#2F67CD",
+      "VOC: Omicron (BA.4)" = "#CA150C",
+      "VOC: Omicron (BA.5)" = "#11961B",
+      "VOC: Omicron (BQ.1)" = "#EECB3A",
+      "VOC: Omicron (XBB)" = "#872B15",
+      "VOC: Omicron (BE.9)" = "#4F4F4F",
+      "VOC: Omicron (BE.10)" = "#52CAFD",
+      "VOC: Omicron (DL.1)" = "#BD19E1",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -661,22 +654,20 @@ gi_irece_epiwseq_plot <- plotly::ggplotly(
     scale_x_discrete(expand = expansion(0, 0)) +
     scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
     scale_fill_manual(values = c(
-      "B.1" = "#FA9084",
-      "B.1.1.28" = "#E49074",
-      "B.1.1.33" = "#FF5744",
-      "VBM: Alpha" = "#DF2A8E",
-      "VBM: Zeta" = "#872B15",
-      "VBM: Gamma" = "#11961B",
-      "VBM: Delta" = "#6F0F84",
-      "VOC: Omicron (BA.1)" = "#EECB3A",
-      "VOC: Omicron (BA.2)" = "#FE0B12",
-      "VOC: Omicron (BA.4)" = "#D860CF",
-      "VOC: Omicron (BA.5)" = "#2F67CD",
-      "VOC: Omicron (BQ.1)" = "#FF7F07",
-      "VOC: Omicron (XBB)" = "#36DF3B",
-      "VOC: Omicron (BE.9)" = "#73FBFD",
-      "VOC: Omicron (BE.10)" = "#FD9EA2",
-      "VOC: Omicron (DL.1)" = "#B50B0B",
+      "Non-VBM/Non-VOC" = "#FD9EA2",
+      "VBM: Alpha" = "#D860CF",
+      "VBM: Zeta" = "#FF5744",
+      "VBM: Gamma" = "#FE0B12",
+      "VBM: Delta" = "#FF7F07",
+      "VOC: Omicron (BA.1)" = "#36DF3B",
+      "VOC: Omicron (BA.2)" = "#2F67CD",
+      "VOC: Omicron (BA.4)" = "#CA150C",
+      "VOC: Omicron (BA.5)" = "#11961B",
+      "VOC: Omicron (BQ.1)" = "#EECB3A",
+      "VOC: Omicron (XBB)" = "#872B15",
+      "VOC: Omicron (BE.9)" = "#4F4F4F",
+      "VOC: Omicron (BE.10)" = "#52CAFD",
+      "VOC: Omicron (DL.1)" = "#BD19E1",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -857,22 +848,20 @@ gi_hsr_epiwseq_plot <- plotly::ggplotly(
     scale_x_discrete(expand = expansion(0, 0)) +
     scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
     scale_fill_manual(values = c(
-      "B.1" = "#FA9084",
-      "B.1.1.28" = "#E49074",
-      "B.1.1.33" = "#FF5744",
-      "VBM: Alpha" = "#DF2A8E",
-      "VBM: Zeta" = "#872B15",
-      "VBM: Gamma" = "#11961B",
-      "VBM: Delta" = "#6F0F84",
-      "VOC: Omicron (BA.1)" = "#EECB3A",
-      "VOC: Omicron (BA.2)" = "#FE0B12",
-      "VOC: Omicron (BA.4)" = "#D860CF",
-      "VOC: Omicron (BA.5)" = "#2F67CD",
-      "VOC: Omicron (BQ.1)" = "#FF7F07",
-      "VOC: Omicron (XBB)" = "#36DF3B",
-      "VOC: Omicron (BE.9)" = "#73FBFD",
-      "VOC: Omicron (BE.10)" = "#FD9EA2",
-      "VOC: Omicron (DL.1)" = "#B50B0B",
+      "Non-VBM/Non-VOC" = "#FD9EA2",
+      "VBM: Alpha" = "#D860CF",
+      "VBM: Zeta" = "#FF5744",
+      "VBM: Gamma" = "#FE0B12",
+      "VBM: Delta" = "#FF7F07",
+      "VOC: Omicron (BA.1)" = "#36DF3B",
+      "VOC: Omicron (BA.2)" = "#2F67CD",
+      "VOC: Omicron (BA.4)" = "#CA150C",
+      "VOC: Omicron (BA.5)" = "#11961B",
+      "VOC: Omicron (BQ.1)" = "#EECB3A",
+      "VOC: Omicron (XBB)" = "#872B15",
+      "VOC: Omicron (BE.9)" = "#4F4F4F",
+      "VOC: Omicron (BE.10)" = "#52CAFD",
+      "VOC: Omicron (DL.1)" = "#BD19E1",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -1022,22 +1011,20 @@ gi_labcov_epiwseq <- plotly::ggplotly(
     scale_x_discrete(expand = expansion(0, 0)) +
     scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
     scale_fill_manual(values = c(
-      "B.1" = "#FA9084",
-      "B.1.1.28" = "#E49074",
-      "B.1.1.33" = "#FF5744",
-      "VBM: Alpha" = "#DF2A8E",
-      "VBM: Zeta" = "#872B15",
-      "VBM: Gamma" = "#11961B",
-      "VBM: Delta" = "#6F0F84",
-      "VOC: Omicron (BA.1)" = "#EECB3A",
-      "VOC: Omicron (BA.2)" = "#FE0B12",
-      "VOC: Omicron (BA.4)" = "#D860CF",
-      "VOC: Omicron (BA.5)" = "#2F67CD",
-      "VOC: Omicron (BQ.1)" = "#FF7F07",
-      "VOC: Omicron (XBB)" = "#36DF3B",
-      "VOC: Omicron (BE.9)" = "#73FBFD",
-      "VOC: Omicron (BE.10)" = "#FD9EA2",
-      "VOC: Omicron (DL.1)" = "#B50B0B",
+      "Non-VBM/Non-VOC" = "#FD9EA2",
+      "VBM: Alpha" = "#D860CF",
+      "VBM: Zeta" = "#FF5744",
+      "VBM: Gamma" = "#FE0B12",
+      "VBM: Delta" = "#FF7F07",
+      "VOC: Omicron (BA.1)" = "#36DF3B",
+      "VOC: Omicron (BA.2)" = "#2F67CD",
+      "VOC: Omicron (BA.4)" = "#CA150C",
+      "VOC: Omicron (BA.5)" = "#11961B",
+      "VOC: Omicron (BQ.1)" = "#EECB3A",
+      "VOC: Omicron (XBB)" = "#872B15",
+      "VOC: Omicron (BE.9)" = "#4F4F4F",
+      "VOC: Omicron (BE.10)" = "#52CAFD",
+      "VOC: Omicron (DL.1)" = "#BD19E1",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -1206,22 +1193,20 @@ gi_lacen_ba_epiwseq_plot <- plotly::ggplotly(
     scale_x_discrete(expand = expansion(0, 0)) +
     scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
     scale_fill_manual(values = c(
-      "B.1" = "#FA9084",
-      "B.1.1.28" = "#E49074",
-      "B.1.1.33" = "#FF5744",
-      "VBM: Alpha" = "#DF2A8E",
-      "VBM: Zeta" = "#872B15",
-      "VBM: Gamma" = "#11961B",
-      "VBM: Delta" = "#6F0F84",
-      "VOC: Omicron (BA.1)" = "#EECB3A",
-      "VOC: Omicron (BA.2)" = "#FE0B12",
-      "VOC: Omicron (BA.4)" = "#D860CF",
-      "VOC: Omicron (BA.5)" = "#2F67CD",
-      "VOC: Omicron (BQ.1)" = "#FF7F07",
-      "VOC: Omicron (XBB)" = "#36DF3B",
-      "VOC: Omicron (BE.9)" = "#73FBFD",
-      "VOC: Omicron (BE.10)" = "#FD9EA2",
-      "VOC: Omicron (DL.1)" = "#B50B0B",
+      "Non-VBM/Non-VOC" = "#FD9EA2",
+      "VBM: Alpha" = "#D860CF",
+      "VBM: Zeta" = "#FF5744",
+      "VBM: Gamma" = "#FE0B12",
+      "VBM: Delta" = "#FF7F07",
+      "VOC: Omicron (BA.1)" = "#36DF3B",
+      "VOC: Omicron (BA.2)" = "#2F67CD",
+      "VOC: Omicron (BA.4)" = "#CA150C",
+      "VOC: Omicron (BA.5)" = "#11961B",
+      "VOC: Omicron (BQ.1)" = "#EECB3A",
+      "VOC: Omicron (XBB)" = "#872B15",
+      "VOC: Omicron (BE.9)" = "#4F4F4F",
+      "VOC: Omicron (BE.10)" = "#52CAFD",
+      "VOC: Omicron (DL.1)" = "#BD19E1",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -1371,22 +1356,20 @@ gi_ljc_epiwseq_plot <- plotly::ggplotly(
     scale_x_discrete(expand = expansion(0, 0)) +
     scale_y_continuous(labels = scales::percent, expand = expansion(0, 0)) +
     scale_fill_manual(values = c(
-      "B.1" = "#FA9084",
-      "B.1.1.28" = "#E49074",
-      "B.1.1.33" = "#FF5744",
-      "VBM: Alpha" = "#DF2A8E",
-      "VBM: Zeta" = "#872B15",
-      "VBM: Gamma" = "#11961B",
-      "VBM: Delta" = "#6F0F84",
-      "VOC: Omicron (BA.1)" = "#EECB3A",
-      "VOC: Omicron (BA.2)" = "#FE0B12",
-      "VOC: Omicron (BA.4)" = "#D860CF",
-      "VOC: Omicron (BA.5)" = "#2F67CD",
-      "VOC: Omicron (BQ.1)" = "#FF7F07",
-      "VOC: Omicron (XBB)" = "#36DF3B",
-      "VOC: Omicron (BE.9)" = "#73FBFD",
-      "VOC: Omicron (BE.10)" = "#FD9EA2",
-      "VOC: Omicron (DL.1)" = "#B50B0B",
+      "Non-VBM/Non-VOC" = "#FD9EA2",
+      "VBM: Alpha" = "#D860CF",
+      "VBM: Zeta" = "#FF5744",
+      "VBM: Gamma" = "#FE0B12",
+      "VBM: Delta" = "#FF7F07",
+      "VOC: Omicron (BA.1)" = "#36DF3B",
+      "VOC: Omicron (BA.2)" = "#2F67CD",
+      "VOC: Omicron (BA.4)" = "#CA150C",
+      "VOC: Omicron (BA.5)" = "#11961B",
+      "VOC: Omicron (BQ.1)" = "#EECB3A",
+      "VOC: Omicron (XBB)" = "#872B15",
+      "VOC: Omicron (BE.9)" = "#4F4F4F",
+      "VOC: Omicron (BE.10)" = "#52CAFD",
+      "VOC: Omicron (DL.1)" = "#BD19E1",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
