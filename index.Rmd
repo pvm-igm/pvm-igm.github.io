@@ -492,6 +492,7 @@ for (i in 1:length(gi_acc_id_split)){
   gi_raw <- rbind(gi_raw, temp)}
 gi_raw$epimseq <- format(as.Date(gi_raw$date), "%Y-%m")
 gi_raw$epiwseq <- format(as.Date(gi_raw$date), "%G-%V")
+gi_raw <- gi_raw[complete.cases(gi_raw$epiwseq), ]
 gi_raw$length <- as.numeric(gi_raw$length)
 
 gi <- gi_raw[gi_raw$length > 25000, ]
