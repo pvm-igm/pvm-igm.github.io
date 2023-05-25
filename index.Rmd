@@ -520,7 +520,10 @@ sc2_variants <- list(
   "VOC: Omicron (XBB)" = c("XBB", unique(gi$pangolin_lineage[grep("^XBB\\.", gi$pangolin_lineage)])),
   "VOC: Omicron (BE.9)" = "BE.9",
   "VOC: Omicron (BE.10)" = "BE.10",
+  "VOC: Omicron (FE.1)" = "FE.1",
+  "VOC: Omicron (KRAKEN)" = "KRAKEN",
   "VOC: Omicron (DL.1)" = c("DL.1", unique(gi$pangolin_lineage[grep("^DL\\.1\\.", gi$pangolin_lineage)])))
+
 
 sc2_oms <- structure(c(rep(names(sc2_variants), sapply(sc2_variants, length))),
                      .Names = c(unlist(sc2_variants)))
@@ -598,8 +601,8 @@ gi_bahia_epiwseq_plot <- plotly::ggplotly(
       "VOC: Omicron (BE.9)" = "#4F4F4F",
       "VOC: Omicron (BE.10)" = "#52CAFD",
       "VOC: Omicron (DL.1)" = "#BD19E1",
-      "VOC: Omicron (KRAKEN)" = "#BBD",
-      "VOC: Omicron (FE.1)" = "#CDA",
+      "VOC: Omicron (KRAKEN)" = "#0000FF",
+      "VOC: Omicron (FE.1)" = "#FFFF00",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -638,8 +641,8 @@ gi_salvador_epiwseq <- plotly::ggplotly(
       "VOC: Omicron (BE.9)" = "#4F4F4F",
       "VOC: Omicron (BE.10)" = "#52CAFD",
       "VOC: Omicron (DL.1)" = "#BD19E1",
-      "VOC: Omicron (KRAKEN)" = "#BBD",
-      "VOC: Omicron (FE.1)" = "#CDA",
+      "VOC: Omicron (KRAKEN)" = "#0000FF",
+      "VOC: Omicron (FE.1)" = "#FFFF00",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -678,8 +681,8 @@ gi_irece_epiwseq_plot <- plotly::ggplotly(
       "VOC: Omicron (BE.9)" = "#4F4F4F",
       "VOC: Omicron (BE.10)" = "#52CAFD",
       "VOC: Omicron (DL.1)" = "#BD19E1",
-      "VOC: Omicron (KRAKEN)" = "#BBD",
-      "VOC: Omicron (FE.1)" = "#CDA",
+      "VOC: Omicron (KRAKEN)" = "#0000FF",
+      "VOC: Omicron (FE.1)" = "#FFFF00",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -874,8 +877,8 @@ gi_hsr_epiwseq_plot <- plotly::ggplotly(
       "VOC: Omicron (BE.9)" = "#4F4F4F",
       "VOC: Omicron (BE.10)" = "#52CAFD",
       "VOC: Omicron (DL.1)" = "#BD19E1",
-      "VOC: Omicron (KRAKEN)" = "#BBD",
-      "VOC: Omicron (FE.1)" = "#CDA",
+      "VOC: Omicron (KRAKEN)" = "#0000FF",
+      "VOC: Omicron (FE.1)" = "#FFFF00",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -1039,8 +1042,8 @@ gi_labcov_epiwseq <- plotly::ggplotly(
       "VOC: Omicron (BE.9)" = "#4F4F4F",
       "VOC: Omicron (BE.10)" = "#52CAFD",
       "VOC: Omicron (DL.1)" = "#BD19E1",
-      "VOC: Omicron (KRAKEN)" = "#BBD",
-      "VOC: Omicron (FE.1)" = "#CDA",
+      "VOC: Omicron (KRAKEN)" = "#0000FF",
+      "VOC: Omicron (FE.1)" = "#FFFF00",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -1223,8 +1226,8 @@ gi_lacen_ba_epiwseq_plot <- plotly::ggplotly(
       "VOC: Omicron (BE.9)" = "#4F4F4F",
       "VOC: Omicron (BE.10)" = "#52CAFD",
       "VOC: Omicron (DL.1)" = "#BD19E1",
-      "VOC: Omicron (KRAKEN)" = "#BBD",
-      "VOC: Omicron (FE.1)" = "#CDA",
+      "VOC: Omicron (KRAKEN)" = "#0000FF",
+      "VOC: Omicron (FE.1)" = "#FFFF00",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
@@ -1388,8 +1391,8 @@ gi_ljc_epiwseq_plot <- plotly::ggplotly(
       "VOC: Omicron (BE.9)" = "#4F4F4F",
       "VOC: Omicron (BE.10)" = "#52CAFD",
       "VOC: Omicron (DL.1)" = "#BD19E1",
-      "VOC: Omicron (KRAKEN)" = "#BBD",
-      "VOC: Omicron (FE.1)" = "#CDA",
+      "VOC: Omicron (KRAKEN)" = "#0000FF",
+      "VOC: Omicron (FE.1)" = "#FFFF00",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
