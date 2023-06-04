@@ -2,28 +2,28 @@
 
 ## Análises do sequenciamento de genoma completo de SARS-CoV-2
 
-- [Requisitos do sistema][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#requisitos-do-sistema]
-- [Programas necessários][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#programas-necess%C3%A1rios]
-- [Configuração do Linux para as análises de montagem dos genomas e construção dos relatórios][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#configura%C3%A7%C3%A3o-do-linux-para-as-an%C3%A1lises-de-montagem-dos-genomas-e-constru%C3%A7%C3%A3o-dos-relat%C3%B3rios]
-- [Atualização das bases de dados utilizadas para os relatórios][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios]
-- [Requisição da lista de amostras para extração e sequenciamento do SARS-CoV-2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios]
-- [Download dos dados da corrida de sequenciamento][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#download-dos-dados-da-corrida-de-sequenciamento]
-- [Avaliação da qualidade da corrida de sequenciamento][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento]
-- [Montagem do genomas de SARS-CoV2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov2]
-- [Relatório REDCap][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#relat%C3%B3rio-redcap]
-- [Submissão GISAID][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#submiss%C3%A3o-gisaid]
-- [Envio do relatório REDCAP para REDCap FIOCRUZ][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#envio-do-relat%C3%B3rio-redcap-para-redcap-fiocruz]
-- [Relatório CIEVS][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#relat%C3%B3rio-cievs]
-  - [E-mail para o CIEVS # somente amostras com requisição GAL][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs--somente-amostras-com-requisi%C3%A7%C3%A3o-gal]
-  - [E-mail para o CIEVS # amostras com requisição HSR][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr]
-  - [E-mail para o CIEVS # amostras com requisição LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov]
-- [Relatório Rede Genômica Fiocruz][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#relat%C3%B3rio-rede-gen%C3%B4mica-fiocruz]
-  - [E-mail para a Rede Genômica Fiocruz # HSR][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--hsr]
-  - [E-mail para a Rede Genômica Fiocruz # LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--labcov]
-  - [E-mail para a Rede Genômica Fiocruz # LACEN-BA / PVM-IGM][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--lacen-ba--pvm-igm]
-- [Backup dos dados][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#backup-dos-dados]
-  - [Envio dos dados para os colaboradores # HSR][https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]
-  - [Envio dos dados para os colaboradores # LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov]
+- [Requisitos do sistema][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#requisitos-do-sistema]
+- [Programas necessários][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
+- [Configuração do Linux para as análises de montagem dos genomas e construção dos relatórios][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#configura%C3%A7%C3%A3o-do-linux-para-as-an%C3%A1lises-de-montagem-dos-genomas-e-constru%C3%A7%C3%A3o-dos-relat%C3%B3rios]
+- [Atualização das bases de dados utilizadas para os relatórios][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios]
+- [Requisição da lista de amostras para extração e sequenciamento do SARS-CoV-2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios]
+- [Download dos dados da corrida de sequenciamento][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#download-dos-dados-da-corrida-de-sequenciamento]
+- [Avaliação da qualidade da corrida de sequenciamento][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento]
+- [Montagem do genomas de SARS-CoV2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov2]
+- [Relatório REDCap][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-redcap]
+- [Submissão GISAID][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#submiss%C3%A3o-gisaid]
+- [Envio do relatório REDCAP para REDCap FIOCRUZ][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-do-relat%C3%B3rio-redcap-para-redcap-fiocruz]
+- [Relatório CIEVS][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-cievs]
+  - [E-mail para o CIEVS # somente amostras com requisição GAL][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--somente-amostras-com-requisi%C3%A7%C3%A3o-gal]
+  - [E-mail para o CIEVS # amostras com requisição HSR][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr]
+  - [E-mail para o CIEVS # amostras com requisição LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov]
+- [Relatório Rede Genômica Fiocruz][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-rede-gen%C3%B4mica-fiocruz]
+  - [E-mail para a Rede Genômica Fiocruz # HSR][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--hsr]
+  - [E-mail para a Rede Genômica Fiocruz # LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--labcov]
+  - [E-mail para a Rede Genômica Fiocruz # LACEN-BA / PVM-IGM][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--lacen-ba--pvm-igm]
+- [Backup dos dados][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#backup-dos-dados]
+  - [Envio dos dados para os colaboradores # HSR][https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]
+  - [Envio dos dados para os colaboradores # LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov]
 
 ### Requisitos do sistema
 
@@ -771,7 +771,7 @@ Estamos à disposição para esclarecer quaisquer dúvidas que possam surgir.
 
 ![LABCOV GISAID Search][pvm_sarscov2_labcov_gisaid_search.png]
 
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#programas-necess%C3%A1rios]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#programas-necess%C3%A1rios
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios
 [https://www.cdc.gov/epiinfo/support/por/pt_downloads.html]: https://www.cdc.gov/epiinfo/support/por/pt_downloads.html
 [https://support.illumina.com/sequencing/sequencing_software/sequencing_analysis_viewer_sav/downloads.html]: https://support.illumina.com/sequencing/sequencing_software/sequencing_analysis_viewer_sav/downloads.html
 [https://www.microsoft.com/pt-br/education/products/office]: https://www.microsoft.com/pt-br/education/products/office
@@ -782,30 +782,30 @@ Estamos à disposição para esclarecer quaisquer dúvidas que possam surgir.
 [https://learn.microsoft.com/pt-br/windows/wsl/install]: https://learn.microsoft.com/pt-br/windows/wsl/install
 [https://www.epicov.org/epi3/frontend]: https://www.epicov.org/epi3/frontend
 [https://bdp.bahia.fiocruz.br]: https://bdp.bahia.fiocruz.br
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#requisitos-do-sistema]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#requisitos-do-sistema
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#programas-necess%C3%A1rios]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#programas-necess%C3%A1rios
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#configura%C3%A7%C3%A3o-do-linux-para-as-an%C3%A1lises-de-montagem-dos-genomas-e-constru%C3%A7%C3%A3o-dos-relat%C3%B3rios]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#configura%C3%A7%C3%A3o-do-linux-para-as-an%C3%A1lises-de-montagem-dos-genomas-e-constru%C3%A7%C3%A3o-dos-relat%C3%B3rios
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov2]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov2
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#relat%C3%B3rio-redcap]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#relat%C3%B3rio-redcap
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#submiss%C3%A3o-gisaid]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#submiss%C3%A3o-gisaid
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#envio-do-relat%C3%B3rio-redcap-para-redcap-fiocruz]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#envio-do-relat%C3%B3rio-redcap-para-redcap-fiocruz
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#relat%C3%B3rio-cievs]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#relat%C3%B3rio-cievs
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#relat%C3%B3rio-rede-gen%C3%B4mica-fiocruz]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#relat%C3%B3rio-rede-gen%C3%B4mica-fiocruz
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--hsr]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--hsr
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--labcov
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--lacen-ba--pvm-igm]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--lacen-ba--pvm-igm
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#backup-dos-dados]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#backup-dos-dados
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#backup-e-envio-dos-dados-para-os-colaboradores--labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#backup-e-envio-dos-dados-para-os-colaboradores--labcov
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#download-dos-dados-da-corrida-de-sequenciamento]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#download-dos-dados-da-corrida-de-sequenciamento
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#requisitos-do-sistema]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#requisitos-do-sistema
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#configura%C3%A7%C3%A3o-do-linux-para-as-an%C3%A1lises-de-montagem-dos-genomas-e-constru%C3%A7%C3%A3o-dos-relat%C3%B3rios]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#configura%C3%A7%C3%A3o-do-linux-para-as-an%C3%A1lises-de-montagem-dos-genomas-e-constru%C3%A7%C3%A3o-dos-relat%C3%B3rios
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov2]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov2
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-redcap]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-redcap
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#submiss%C3%A3o-gisaid]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#submiss%C3%A3o-gisaid
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-do-relat%C3%B3rio-redcap-para-redcap-fiocruz]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-do-relat%C3%B3rio-redcap-para-redcap-fiocruz
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-cievs]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-cievs
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-rede-gen%C3%B4mica-fiocruz]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-rede-gen%C3%B4mica-fiocruz
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--hsr]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--hsr
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--labcov
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--lacen-ba--pvm-igm]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--lacen-ba--pvm-igm
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#backup-dos-dados]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#backup-dos-dados
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#backup-e-envio-dos-dados-para-os-colaboradores--labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#backup-e-envio-dos-dados-para-os-colaboradores--labcov
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#download-dos-dados-da-corrida-de-sequenciamento]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#download-dos-dados-da-corrida-de-sequenciamento
 [https://developer.basespace.illumina.com/docs/content/documentation/cli/cli-overview]:https://developer.basespace.illumina.com/docs/content/documentation/cli/cli-overview
 [pvm_sarscov2_labcov_gisaid_search.png]: pvm_sarscov2_labcov_gisaid_search.png
 [pvm_sarscov2_hsr_gisaid_search.png]: pvm_sarscov2_hsr_gisaid_search.png
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs--somente-amostras-com-requisi%C3%A7%C3%A3o-gal]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs--somente-amostras-com-requisi%C3%A7%C3%A3o-gal
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov
-[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov
-[https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]: https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--somente-amostras-com-requisi%C3%A7%C3%A3o-gal]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--somente-amostras-com-requisi%C3%A7%C3%A3o-gal
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov
+[https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]: https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr
