@@ -6,7 +6,6 @@
 - [Programas necessários][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
 - [Configuração do Linux para as análises de montagem dos genomas e construção dos relatórios][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#configura%C3%A7%C3%A3o-do-linux-para-as-an%C3%A1lises-de-montagem-dos-genomas-e-constru%C3%A7%C3%A3o-dos-relat%C3%B3rios]
 - [Atualização das bases de dados utilizadas para os relatórios][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios]
-- [Requisição da lista de amostras para extração e sequenciamento do SARS-CoV-2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios]
 - [Download dos dados da corrida de sequenciamento][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#download-dos-dados-da-corrida-de-sequenciamento]
 - [Avaliação da qualidade da corrida de sequenciamento][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento]
 - [Montagem do genomas de SARS-CoV2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov2]
@@ -152,49 +151,31 @@ cmd
 PVM_DATABASES.sh
 ```
 
-### Requisição da lista de amostras para extração e sequenciamento do SARS-CoV-2
+### Download dos dados da corrida de sequenciamento
 
-Abrir o script de listagem das amostras para extração e sequenciamento do SARS-CoV-2 e editar o campo de data em `$75>="yyyy-mm-dd"`, o qual `yyyy-mm-dd` representa a data mínima da busca das amostras:
-
-- No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
-
-```bash
-nano $HOME/bin/PVMSEQ-EXTRACTION_DATE # abrir script com editor de texto nano
-```
-
-Salvar arquivo após edição:
-
-```text
-Ctrl+X -> Y -> Enter
-```
-
-Rodar o script:
+Informar para o prompt de comando o nome da corrida de sequenciamento 
 
 - No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
-
-```bash
-PVMSEQ-EXTRACTION_DATE # rodar script para gerar a planilha de requisição de extração de amostras
-```
-
-O arquivo será salvo em `\OneDrive\OneDrive - FIOCRUZ\Sequenciamento\REQUISICOES_SEQ`.
-
-### Informar para o prompt de comando o nome da corrida de sequenciamento 
-
-No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
 
 ```bash
 # criar array com o nome da biblioteca de sequenciamento
 LIBRARY=IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd
 ```
 
-### Download dos dados da corrida de sequenciamento
+Baixar os arquivos de qualidade da corrida
 
-No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
+- No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
 
 ```bash
 # baixar os arquivos de qualidade da corrida
 bs download run --no-metadata --summary -o $HOME/BaseSpace/"$LIBRARY"_SAV -n "$LIBRARY"
+```
 
+Baixar os arquivos fastQ
+
+- No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
+
+```bash
 # baixar os arquivos fastQ
 bs download project --no-metadata --summary --extension=fastq.gz -o $HOME/BaseSpace/"$LIBRARY" -n "$LIBRARY"
 ```
