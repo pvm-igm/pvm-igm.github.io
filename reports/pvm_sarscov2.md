@@ -25,14 +25,14 @@
   - [Envio dos dados para os colaboradores # HSR][https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]
   - [Envio dos dados para os colaboradores # LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov]
 
-### Requisitos do sistema
+### Requisitos mínimos do sistema
 
-|     |                                      |
-| --- | ------------------------------------ |
-| CPU | 8ª geração Intel Core i5 ou superior |
-| RAM | 8 GB ou superior                     |
-| SO  | Windows 10 (64-bit) ou superior      |
-| WSL | versão 2                             |
+|     |                                                |
+| --- | ---------------------------------------------- |
+| CPU | Ryzen 5 3ª  geração / Intel Core i5 8ª geração |
+| RAM | 8 GB                                           |
+| SO  | Windows 10 (64-bit)                            |
+| WSL | versão 2                                       |
 
 ### Programas necessários
 
