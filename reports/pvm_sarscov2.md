@@ -80,13 +80,13 @@ Após criar atalhos no [OneDrive][https://github.com/pvm-igm/pvm-igm.github.io/b
 
 ```bash
 # criar atalho para o diretório Dados presente no OneDrive
-ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive/OneDrive\ -\ FIOCRUZ/Dados/ PVM_DADOS
+ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/Dados/ PVM_DADOS
 
 # criar atalho para o diretório Envios presente no OneDrive
-ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive/OneDrive\ -\ FIOCRUZ/Envios/ PVM_SEQ_BKP
+ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/Envios/ PVM_SEQ_BKP
 
 # criar atalho para o diretório Sequenciamento presente no OneDrive
-ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive/OneDrive\ -\ FIOCRUZ/Sequenciamento/ PVM_SEQ
+ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/Sequenciamento/ PVM_SEQ
 
 # criar diretório bin no $HOME do usuário do Linux
 [ ! -d $HOME/bin ] && mkdir $HOME/bin
