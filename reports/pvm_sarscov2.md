@@ -59,7 +59,7 @@ MS Teams -> PVM-IGM -> Diagnóstico -> Arquivos -> Sistemas -> Soroteca -> Adici
 - **Canal Dados**
 
 ```text
-MS Teams -> PVM-IGM -> Dados -> Arquivos -> Sistemas -> Soroteca -> Adicionar atalho ao OneDrive
+MS Teams -> PVM-IGM -> Dados -> Arquivos -> Adicionar atalho ao OneDrive
 ```
 
 - **Canal Sequenciamento**
