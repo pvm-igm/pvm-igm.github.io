@@ -78,6 +78,9 @@ Após criar atalhos no [OneDrive][https://github.com/pvm-igm/pvm-igm.github.io/b
 - No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
 
 ```bash
+# instalar ferramenta para lidar com banco de dados .mdb
+sudo apt-get install mdbtools
+
 # criar atalho para o diretório Dados presente no OneDrive
 ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/Dados/ PVM_DADOS
 
