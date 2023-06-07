@@ -21,7 +21,7 @@
   - [E-mail para a Rede Genômica Fiocruz # LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--labcov]
   - [E-mail para a Rede Genômica Fiocruz # LACEN-BA / PVM-IGM][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--lacen-ba--pvm-igm]
 - [Backup dos dados][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#backup-dos-dados]
-  - [Envio dos dados para os colaboradores # HSR][https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]
+  - [Envio dos dados para os colaboradores # HSR][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]
   - [Envio dos dados para os colaboradores # LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov]
 
 ### Requisitos mínimos do sistema
@@ -792,4 +792,4 @@ Estamos à disposição para esclarecer quaisquer dúvidas que possam surgir.
 [https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr
 [https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov
 [https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov
-[https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]: https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr
