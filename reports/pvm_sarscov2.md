@@ -714,13 +714,13 @@ Os dados gerados pelo sequenciamento e as análises de montagem do colaborador L
 
 ```bash
 # criar os diretórios do colaborador HSR no diretório de envio para o Teams
-mkdir -p $HOME/TEMP/HSR/FASTQ $HOME/TEMP/HSR/RESULTS
+mkdir -p $HOME/TEMP/LABCOV/FASTQ $HOME/TEMP/LABCOV/RESULTS
 
 # copiar os arquivos fastQ das amostras do LABCOV para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp $HOME/TEMP/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/TEMP/LABCOV/FASTQ/; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "LABCOV" | awk -F, '{print $2}'); do cp $HOME/TEMP/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/TEMP/LABCOV/FASTQ/; done
 
 # copiar a análise das amostras do LABCOV para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/LABCOV/RESULTS; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "LABCOV" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/LABCOV/RESULTS; done
 ```
 
 Enviar e-mail para o colaborador do LABCOV (hermespedreira@ufrb.edu.br) com o link do diretório com os dados:
