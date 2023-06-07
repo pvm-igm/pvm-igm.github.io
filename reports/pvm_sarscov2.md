@@ -21,7 +21,7 @@
   - [E-mail para a Rede Genômica Fiocruz # LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--labcov]
   - [E-mail para a Rede Genômica Fiocruz # LACEN-BA / PVM-IGM][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--lacen-ba--pvm-igm]
 - [Backup dos dados][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#backup-dos-dados]
-  - [Envio dos dados para os colaboradores # HSR][https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]
+  - [Envio dos dados para os colaboradores # HSR][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]
   - [Envio dos dados para os colaboradores # LABCOV][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov]
 
 ### Requisitos mínimos do sistema
@@ -79,7 +79,7 @@ Após criar atalhos no [OneDrive][https://github.com/pvm-igm/pvm-igm.github.io/b
 
 ```bash
 # instalar ferramenta para lidar com banco de dados .mdb
-sudo apt-get install mdbtools
+sudo apt-get install gnumeric mdbtools
 
 # criar atalho para o diretório Dados presente no OneDrive
 ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/Dados/ PVM_DADOS
@@ -576,7 +576,7 @@ Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `Rel
 - **Destinatários**
 
 ```text
-arnaldo.medeiros@saude.gov.br; brunosolanosouza@gmail.com; camila.bacia@hsr.com.br; camila.indiani@fiocruz.br; carolina.nonaka@hsr.com.br; cievs.notifica@saude.ba.gov.br; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; lacen.clavep@saude.ba.gov.br; marilda.goncalves@fiocruz.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; thiago.guedes@saude.gov.br; tiago.graf@fiocruz.br; vitor.martins@ioc.fiocruz.br; walquiria.almeida@saude.gov.br
+arnaldo.medeiros@saude.gov.br; brunosolanosouza@gmail.com; camila.indiani@fiocruz.br; carolina.nonaka@hsr.com.br; cievs.notifica@saude.ba.gov.br; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; lacen.clavep@saude.ba.gov.br; marilda.goncalves@fiocruz.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; thiago.guedes@saude.gov.br; tiago.graf@fiocruz.br; vitor.martins@ioc.fiocruz.br; walquiria.almeida@saude.gov.br
 ```
 
 - **Assunto**
@@ -674,7 +674,7 @@ for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv
 for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/HSR/RESULTS; done
 ```
 
-Enviar e-mail para o colaborador do LABCOV (hermespedreira@ufrb.edu.br) com o link do diretório com os dados:
+Enviar e-mail para o colaborador HSR com o link do diretório com os dados:
 
 - **Destinatários**
 
@@ -714,13 +714,13 @@ Os dados gerados pelo sequenciamento e as análises de montagem do colaborador L
 
 ```bash
 # criar os diretórios do colaborador HSR no diretório de envio para o Teams
-mkdir -p $HOME/TEMP/HSR/FASTQ $HOME/TEMP/HSR/RESULTS
+mkdir -p $HOME/TEMP/LABCOV/FASTQ $HOME/TEMP/LABCOV/RESULTS
 
 # copiar os arquivos fastQ das amostras do LABCOV para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp $HOME/TEMP/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/TEMP/LABCOV/FASTQ/; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "LABCOV" | awk -F, '{print $2}'); do cp $HOME/TEMP/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/TEMP/LABCOV/FASTQ/; done
 
 # copiar a análise das amostras do LABCOV para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/LABCOV/RESULTS; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "LABCOV" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/LABCOV/RESULTS; done
 ```
 
 Enviar e-mail para o colaborador do LABCOV (hermespedreira@ufrb.edu.br) com o link do diretório com os dados:
@@ -792,4 +792,4 @@ Estamos à disposição para esclarecer quaisquer dúvidas que possam surgir.
 [https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr
 [https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov
 [https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov
-[https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]: https://github.com/pvm-igm/pvm-igm.github.io/edit/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr
+[https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr]: https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr
