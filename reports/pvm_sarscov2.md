@@ -674,7 +674,7 @@ for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv
 for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/HSR/RESULTS; done
 ```
 
-Enviar e-mail para o colaborador do LABCOV (hermespedreira@ufrb.edu.br) com o link do diretório com os dados:
+Enviar e-mail para o colaborador HSR com o link do diretório com os dados:
 
 - **Destinatários**
 
