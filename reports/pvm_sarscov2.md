@@ -79,7 +79,7 @@ Após criar atalhos no [OneDrive][https://github.com/pvm-igm/pvm-igm.github.io/b
 
 ```bash
 # instalar ferramenta para lidar com banco de dados .mdb
-sudo apt-get install gnumeric mdbtools
+sudo apt-get -y install gnumeric mdbtools
 
 # criar atalho para o diretório Dados presente no OneDrive
 ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/Dados/ PVM_DADOS
