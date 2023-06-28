@@ -1,6 +1,6 @@
 # Plataforma de Vigilância Molecular
 
-## Análises do sequenciamento de genoma completo de SARS-CoV-2
+## Análises do sequenciamento de genoma completo de Influenza
 
 - [Requisitos do sistema][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_flu.md#requisitos-m%C3%ADnimos-do-sistema]
 - [Programas necessários][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_flu.md#programas-necess%C3%A1rios]
