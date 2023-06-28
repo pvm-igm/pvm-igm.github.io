@@ -1,4 +1,4 @@
-# Plataforma de Vigilância Molecular
+![image](https://github.com/pvm-igm/pvm-igm.github.io/assets/28869431/564f5107-9a15-4013-95a7-6953ebcf9cf8)# Plataforma de Vigilância Molecular
 
 ## Análises do sequenciamento de genoma completo de Influenza
 
@@ -176,7 +176,9 @@ A montagem dos genoma demora cerca de *XX* minutos por referência em um computa
 
 XXX
 
-### XXX
+### Definição de cepa e resistência à antivirais
+
+XXX
 
 ### Submissão GISAID
 
