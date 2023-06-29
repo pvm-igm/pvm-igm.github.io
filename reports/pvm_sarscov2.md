@@ -693,9 +693,9 @@ Plataforma de Vigilância Molecular - Arquivos fastQ e resultados da montagem do
 ```text
 Prezados Dr. Bruno Solano e Dra. Carol Nonaka,
 
-Estamos disponibilizando o link para acesso aos arquivos FastQ gerados no sequenciamento, juntamente com os arquivos relacionados à montagem dos genomas de SARS-CoV-2. O acesso a este link é restrito e requer a credencial de um dos e-mails solicitantes do sequenciamento (carolina.nonaka@hsr.com.br ou brunosolanosouza@gmail.com). Informamos que os arquivos de sequenciamentos anteriores serão adicionados à pasta gradualmente.
+Estamos disponibilizando o link para acesso aos arquivos FastQ gerados no sequenciamento, juntamente com os arquivos relacionados à montagem dos genomas de SARS-CoV-2. O acesso a este link é restrito e requer a credencial de um dos e-mails solicitantes do sequenciamento (carolina.nonaka@hsr.com.br, brunosolanosouza@gmail.com ou limaf.leticia@gmail.com). Informamos que os arquivos de sequenciamentos anteriores serão adicionados à pasta gradualmente.
 
-Link: https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-BackupMiseq/Er7QVFwM5dZKsomz_KxsoocBhIqlwaY8HIHNxd8S84H5qQ?e=8gpt2L.
+Link: https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-BackupMiseq/Er7QVFwM5dZKsomz_KxsoocBhIqlwaY8HIHNxd8S84H5qQ.
 
 Além disso, as sequências em formato FASTA estão disponíveis na Plataforma GISAID. Para realizar uma busca direcionada aos genomas do HSR gerados pela PVM, acesse a aba "EpiCoV -> Search" e insira o termo "FIOCRUZ-PVM" no campo "Virus name" e o termo "H.S.R" em "Text Search".
 
@@ -713,7 +713,7 @@ Os dados gerados pelo sequenciamento e as análises de montagem do colaborador L
 - No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
 
 ```bash
-# criar os diretórios do colaborador HSR no diretório de envio para o Teams
+# criar os diretórios do colaborador LABCOV no diretório de envio para o Teams
 mkdir -p $HOME/TEMP/LABCOV/FASTQ $HOME/TEMP/LABCOV/RESULTS
 
 # copiar os arquivos fastQ das amostras do LABCOV para o diretório de backup
