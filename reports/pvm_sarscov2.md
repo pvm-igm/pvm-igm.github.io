@@ -693,7 +693,7 @@ Plataforma de Vigilância Molecular - Arquivos fastQ e resultados da montagem do
 ```text
 Prezados Dr. Bruno Solano e Dra. Carol Nonaka,
 
-Estamos disponibilizando o link para acesso aos arquivos FastQ gerados no sequenciamento, juntamente com os arquivos relacionados à montagem dos genomas de SARS-CoV-2. O acesso a este link é restrito e requer a credencial de um dos e-mails solicitantes do sequenciamento (carolina.nonaka@hsr.com.br, brunosolanosouza@gmail.com ou limaf.leticia@gmail.com). Informamos que os arquivos de sequenciamentos anteriores serão adicionados à pasta gradualmente.
+Estamos disponibilizando o link para acesso aos arquivos FastQ gerados no sequenciamento, juntamente com os arquivos relacionados à montagem dos genomas de SARS-CoV-2. O acesso a este link é restrito e requer a credencial de um dos e-mails solicitantes do sequenciamento (carolina.nonaka@hsr.com.br, brunosolanosouza@gmail.com ou limaf.leticia@gmail.com).
 
 Link: https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-BackupMiseq/Er7QVFwM5dZKsomz_KxsoocBhIqlwaY8HIHNxd8S84H5qQ.
 
