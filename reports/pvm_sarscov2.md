@@ -336,7 +336,7 @@ No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sar
 cd $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"
 
 # utilizar o relatório RECap e os arquivos fasta dos genomas para poder gerar os demais relatórios
-PVM_REPORT.sh PVM-SEQ_REDCap_"$LIBRARY".txt $HOME/vigeas/"$LIBRARY"_ANALYSIS/"$LIBRARY".consensus.*.fasta
+PVM_REPORT.sh PVM-SEQ_REDCap_"$LIBRARY".txt $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$LIBRARY".consensus.ARTIC.*.fasta
 ```
 
 Serão gerados os seguintes arquivos:
