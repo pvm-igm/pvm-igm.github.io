@@ -493,7 +493,7 @@ Enviar e-mail para o CIEVS com o arquivo `RelatorioCIEVS_yyyy-mm-dd.csv` em anex
 - **Destinatários**
 
 ```text
-cievs.notifica@saude.ba.gov.br; pvm@fiocruz.br; ricardo_khouri@hotmail.com; carolina.nonaka@hsr.com.br; brunosolanosouza@gmail.com
+cievs.notifica@saude.ba.gov.br; divep.covid@saude.ba.gov.br; pvm@fiocruz.br; ricardo_khouri@hotmail.com; carolina.nonaka@hsr.com.br; brunosolanosouza@gmail.com
 ```
 
 - **Assunto**
@@ -509,9 +509,8 @@ Prezados colegas,
 
 Anexamos o relatório referente às linhagens dos genomas do SARS-CoV-2 identificadas a partir de amostras coletadas no estado da Bahia. No entanto, ressaltamos que, para amostras coletadas no Hospital São Rafael, solicitamos que quaisquer informações adicionais dos pacientes sejam solicitadas diretamente à Dra. Carol Nonaka (carolina.nonaka@hsr.com.br).
 
-Além disso, compartilhamos o link seguro da pasta onde armazenamos todos os arquivos previamente enviados e as informações dos Relatórios Epidemiológicos relacionados aos casos anteriores:
-https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-Sequenciamento/EtxjLSknDiNPngho9DbI5gkBddL8R7A0rwG0ADA1G5lulA?email=cievs.notifica%40saude.ba.gov.br&e=X9AH2E
-Este link foi configurado de forma a garantir o acesso exclusivo ao e-mail de vocês (cievs.notifica@saude.ba.gov.br).
+Além disso, compartilhamos o link seguro da pasta onde armazenamos todos os arquivos previamente enviados e as informações dos Relatórios Epidemiológicos relacionados aos casos anteriores: https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-Dados/EtJAarqETmhAleN09owa0T0B9dvvL9ulq76NagmP028mkw?e=7g3zlR
+Este link foi configurado de forma a garantir o acesso exclusivo ao e-mail de vocês (cievs.notifica@saude.ba.gov.br e divep.covid@saude.ba.gov.br).
 
 Nossa equipe está à disposição para quaisquer esclarecimentos adicionais sobre o relatório, e ficaremos felizes em ajudá-los da melhor maneira possível. Agradecemos imensamente a colaboração de todos na rede de vigilância genômica em nosso país e, em especial, a contribuição do Hospital São Rafael.
 ```
@@ -523,7 +522,7 @@ Enviar e-mail para o CIEVS com o arquivo `RelatorioCIEVS_yyyy-mm-dd.csv` em anex
 - **Destinatários**
 
 ```text
-cievs.notifica@saude.ba.gov.br; pvm@fiocruz.br; ricardo_khouri@hotmail.com; hermespedreira@ufrb.edu.br
+cievs.notifica@saude.ba.gov.br; divep.covid@saude.ba.gov.br; pvm@fiocruz.br; ricardo_khouri@hotmail.com; hermespedreira@ufrb.edu.br
 ```
 
 - **Assunto**
@@ -539,9 +538,8 @@ Prezados colegas,
 
 Anexamos o relatório referente às linhagens dos genomas do SARS-CoV-2 identificadas a partir de amostras coletadas no estado da Bahia. No entanto, ressaltamos que, para amostras coletadas no Laboratório de Diagnóstico Molecular da COVID-19 do CCS/UFRB, solicitamos que quaisquer informações adicionais dos pacientes sejam solicitadas diretamente ao Dr. Hermes Pedreira (hermespedreira@ufrb.edu.br).
 
-Além disso, compartilhamos o link seguro da pasta onde armazenamos todos os arquivos previamente enviados e as informações dos Relatórios Epidemiológicos relacionados aos casos anteriores:
-https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-Sequenciamento/EtxjLSknDiNPngho9DbI5gkBddL8R7A0rwG0ADA1G5lulA?email=cievs.notifica%40saude.ba.gov.br&e=X9AH2E
-Este link foi configurado de forma a garantir o acesso exclusivo ao e-mail de vocês (cievs.notifica@saude.ba.gov.br).
+Além disso, compartilhamos o link seguro da pasta onde armazenamos todos os arquivos previamente enviados e as informações dos Relatórios Epidemiológicos relacionados aos casos anteriores: https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-Dados/EtJAarqETmhAleN09owa0T0B9dvvL9ulq76NagmP028mkw?e=7g3zlR
+Este link foi configurado de forma a garantir o acesso exclusivo ao e-mail de vocês (cievs.notifica@saude.ba.gov.br e divep.covid@saude.ba.gov.br).
 
 Nossa equipe está à disposição para quaisquer esclarecimentos adicionais sobre o relatório, e ficaremos felizes em ajudá-los da melhor maneira possível. Agradecemos imensamente a colaboração de todos na rede de vigilância genômica em nosso país e, em especial, a contribuição do Laboratório de Diagnóstico Molecular da COVID-19 do CCS/UFRB.
 ```
