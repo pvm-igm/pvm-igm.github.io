@@ -400,7 +400,7 @@ redcap_sars2seq <- POST("https://bdp.bahia.fiocruz.br/api/",
 redcap_sars2seq <- read.csv("redcap_sars2seq.csv", header = TRUE, stringsAsFactors = TRUE)
 redcap_sars2seq <- replace(redcap_sars2seq, is.na(redcap_sars2seq), "")
 
-redcap_sars2seq_assay <- n_distinct(redcap_sars2seq$nome_seq)
+redcap_sars2seq_assay <- n_distinct(redcap_sars2seq$seq_name)
 
 flexdashboard::valueBox(redcap_sars2seq_assay,
                         caption = "SEQUENCIAMENTOS REALIZADOS",
@@ -411,7 +411,7 @@ flexdashboard::valueBox(redcap_sars2seq_assay,
 ###  {.value-box}
 
 ```{r}
-redcap_sars2seq_sample <- n_distinct(redcap_sars2seq$seq_id)
+redcap_sars2seq_sample <- n_distinct(redcap_sars2seq$redcap_id)
 
 flexdashboard::valueBox(redcap_sars2seq_sample,
                         caption = "AMOSTRAS SEQUENCIADAS",
@@ -422,7 +422,7 @@ flexdashboard::valueBox(redcap_sars2seq_sample,
 ###  {.value-box}
 
 ```{r}
-redcap_sars2seq_gi <- sum(grepl("EPI_ISL", redcap_sars2seq$gisaid_id))
+redcap_sars2seq_gi <- sum(grepl("EPI_ISL", redcap_sars2seq$acc_number))
 
 flexdashboard::valueBox(redcap_sars2seq_gi,
                         caption = "GENOMAS DEPOSITADOS NO GISAID",
@@ -435,9 +435,9 @@ flexdashboard::valueBox(redcap_sars2seq_gi,
 ### Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-redcap_sars2seq$epimseq <- format(as.Date(redcap_sars2seq$dt_se), "%Y-%m")
-redcap_sars2seq$epimseq <- format(as.Date(redcap_sars2seq$dt_se), "%Y-%m")
-redcap_sars2seq$epiwseq <- format(as.Date(redcap_sars2seq$dt_se), "%G-%V")
+redcap_sars2seq$epimseq <- format(as.Date(redcap_sars2seq$dt_seq), "%Y-%m")
+redcap_sars2seq$epimseq <- format(as.Date(redcap_sars2seq$dt_seq), "%Y-%m")
+redcap_sars2seq$epiwseq <- format(as.Date(redcap_sars2seq$dt_seq), "%G-%V")
 
 redcap_sars2seq_filt_gi <- redcap_sars2seq %>% filter(!is.na(gisaid_id))
 
@@ -734,7 +734,7 @@ gi_irece_epiwseq_plot
 ###  {.value-box}
 
 ```{r}
-hsr <- redcap_sars2seq %>% filter(redcap_sars2seq$req_sequenc == "HSR")
+hsr <- redcap_sars2seq %>% filter(redcap_sars2seq$req_seq == "HSR")
 
 hsr_seq <- n_distinct(hsr$nome_seq)
 
@@ -919,7 +919,7 @@ gi_hsr_epiwseq_plot
 ###  {.value-box}
 
 ```{r}
-labcov <- redcap_sars2seq %>% filter(redcap_sars2seq$req_sequenc == "LABCOV")
+labcov <- redcap_sars2seq %>% filter(redcap_sars2seq$req_seq == "LABCOV")
 
 labcov_seq <- n_distinct(labcov$nome_seq)
 
@@ -1085,7 +1085,7 @@ gi_labcov_epiwseq
 ###  {.value-box}
 
 ```{r}
-lacen_ba <- redcap_sars2seq %>% filter(redcap_sars2seq$req_sequenc == "LACEN-BA")
+lacen_ba <- redcap_sars2seq %>% filter(redcap_sars2seq$req_seq == "LACEN-BA")
 
 lacen_ba_seq <- n_distinct(lacen_ba$nome_seq)
 
@@ -1270,7 +1270,7 @@ gi_lacen_ba_epiwseq_plot
 ###  {.value-box}
 
 ```{r}
-ljc <- redcap_sars2seq %>% filter(redcap_sars2seq$req_sequenc == "LJC")
+ljc <- redcap_sars2seq %>% filter(redcap_sars2seq$req_seq == "LJC")
 
 ljc_seq <- n_distinct(ljc$nome_seq)
 
