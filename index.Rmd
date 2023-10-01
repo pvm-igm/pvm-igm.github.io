@@ -55,8 +55,6 @@ htmltools::tagList(fontawesome::fa_html_dependency())
 knitr::include_graphics("images/logo_fiocruz.svg")
 ```
 
- 
-
 <hr />
 
 <p style="text-align: center;">
@@ -439,9 +437,9 @@ redcap_sars2seq$epimseq <- format(as.Date(redcap_sars2seq$dt_seq), "%Y-%m")
 redcap_sars2seq$epimseq <- format(as.Date(redcap_sars2seq$dt_seq), "%Y-%m")
 redcap_sars2seq$epiwseq <- format(as.Date(redcap_sars2seq$dt_seq), "%G-%V")
 
-redcap_sars2seq_filt_gi <- redcap_sars2seq %>% filter(!is.na(gisaid_id))
+redcap_sars2seq_filt_gi <- redcap_sars2seq %>% filter(!is.na(acc_number))
 
-redcap_sars2seq_filt_nogi <- redcap_sars2seq %>% filter(is.na(gisaid_id))
+redcap_sars2seq_filt_nogi <- redcap_sars2seq %>% filter(is.na(acc_number))
 
 redcap_sars2seq_gi <- count(redcap_sars2seq_filt_gi$epimseq)
 names(redcap_sars2seq_gi) <- c("epimseq", "submitted")
@@ -736,7 +734,7 @@ gi_irece_epiwseq_plot
 ```{r}
 hsr <- redcap_sars2seq %>% filter(redcap_sars2seq$req_seq == "HSR")
 
-hsr_seq <- n_distinct(hsr$nome_seq)
+hsr_seq <- n_distinct(hsr$seq_name)
 
 flexdashboard::valueBox(hsr_seq,
                         caption = "SEQUENCIAMENTOS REALIZADOS",
@@ -747,7 +745,7 @@ flexdashboard::valueBox(hsr_seq,
 ###  {.value-box}
 
 ```{r}
-hsr_sample <- n_distinct(hsr$seq_id)
+hsr_sample <- n_distinct(hsr$redcap_id)
 
 flexdashboard::valueBox(hsr_sample,
                         caption = "AMOSTRAS SEQUENCIADAS",
@@ -758,7 +756,7 @@ flexdashboard::valueBox(hsr_sample,
 ###  {.value-box}
 
 ```{r}
-hsr_gi <- sum(grepl("EPI_ISL", hsr$gisaid_id))
+hsr_gi <- sum(grepl("EPI_ISL", hsr$acc_number))
 
 flexdashboard::valueBox(hsr_gi,
                         caption = "GENOMAS DEPOSITADOS NO GISAID",
@@ -771,9 +769,9 @@ flexdashboard::valueBox(hsr_gi,
 ### Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-hsr_filt_gi <- hsr %>% filter(!is.na(gisaid_id))
+hsr_filt_gi <- hsr %>% filter(!is.na(acc_number))
 
-hsr_filt_nogi <- hsr %>% filter(is.na(gisaid_id))
+hsr_filt_nogi <- hsr %>% filter(is.na(acc_number))
 
 hsr_gi <- count(hsr_filt_gi$epimseq)
 names(hsr_gi) <- c("epimseq", "submitted")
@@ -921,7 +919,7 @@ gi_hsr_epiwseq_plot
 ```{r}
 labcov <- redcap_sars2seq %>% filter(redcap_sars2seq$req_seq == "LABCOV")
 
-labcov_seq <- n_distinct(labcov$nome_seq)
+labcov_seq <- n_distinct(labcov$seq_name)
 
 flexdashboard::valueBox(labcov_seq,
                         caption = "SEQUENCIAMENTOS REALIZADOS",
@@ -932,7 +930,7 @@ flexdashboard::valueBox(labcov_seq,
 ###  {.value-box}
 
 ```{r}
-labcov_sample <- n_distinct(labcov$seq_id)
+labcov_sample <- n_distinct(labcov$redcap_id)
 
 flexdashboard::valueBox(labcov_sample,
                         caption = "AMOSTRAS SEQUENCIADAS",
@@ -943,7 +941,7 @@ flexdashboard::valueBox(labcov_sample,
 ###  {.value-box}
 
 ```{r}
-labcov_gi <- sum(grepl("EPI_ISL", labcov$gisaid_id))
+labcov_gi <- sum(grepl("EPI_ISL", labcov$acc_number))
 
 flexdashboard::valueBox(labcov_gi,
                         caption = "GENOMAS DEPOSITADOS NO GISAID",
@@ -956,9 +954,9 @@ flexdashboard::valueBox(labcov_gi,
 ### Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-labcov_filt_gi <- labcov %>% filter(!is.na(gisaid_id))
+labcov_filt_gi <- labcov %>% filter(!is.na(acc_number))
 
-labcov_filt_nogi <- labcov %>% filter(is.na(gisaid_id))
+labcov_filt_nogi <- labcov %>% filter(is.na(acc_number))
 
 labcov_gi <- count(labcov_filt_gi$epimseq)
 names(labcov_gi) <- c("epimseq", "submitted")
@@ -1087,7 +1085,7 @@ gi_labcov_epiwseq
 ```{r}
 lacen_ba <- redcap_sars2seq %>% filter(redcap_sars2seq$req_seq == "LACEN-BA")
 
-lacen_ba_seq <- n_distinct(lacen_ba$nome_seq)
+lacen_ba_seq <- n_distinct(lacen_ba$seq_name)
 
 flexdashboard::valueBox(lacen_ba_seq,
                         caption = "SEQUENCIAMENTOS REALIZADOS",
@@ -1098,7 +1096,7 @@ flexdashboard::valueBox(lacen_ba_seq,
 ###  {.value-box}
 
 ```{r}
-lacen_ba_sample <- n_distinct(lacen_ba$seq_id)
+lacen_ba_sample <- n_distinct(lacen_ba$redcap_id)
 
 flexdashboard::valueBox(lacen_ba_sample,
                         caption = "AMOSTRAS SEQUENCIADAS",
@@ -1109,7 +1107,7 @@ flexdashboard::valueBox(lacen_ba_sample,
 ###  {.value-box}
 
 ```{r}
-lacen_ba_gi <- sum(grepl("EPI_ISL", lacen_ba$gisaid_id))
+lacen_ba_gi <- sum(grepl("EPI_ISL", lacen_ba$acc_number))
 
 flexdashboard::valueBox(lacen_ba_gi,
                         caption = "GENOMAS DEPOSITADOS NO GISAID",
@@ -1122,9 +1120,9 @@ flexdashboard::valueBox(lacen_ba_gi,
 ### Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-lacen_ba_filt_gi <- lacen_ba %>% filter(!is.na(gisaid_id))
+lacen_ba_filt_gi <- lacen_ba %>% filter(!is.na(acc_number))
 
-lacen_ba_filt_nogi <- lacen_ba %>% filter(is.na(gisaid_id))
+lacen_ba_filt_nogi <- lacen_ba %>% filter(is.na(acc_number))
 
 lacen_ba_gi <- count(lacen_ba_filt_gi$epimseq)
 names(lacen_ba_gi) <- c("epimseq", "submitted")
@@ -1272,7 +1270,7 @@ gi_lacen_ba_epiwseq_plot
 ```{r}
 ljc <- redcap_sars2seq %>% filter(redcap_sars2seq$req_seq == "LJC")
 
-ljc_seq <- n_distinct(ljc$nome_seq)
+ljc_seq <- n_distinct(ljc$seq_name)
 
 flexdashboard::valueBox(ljc_seq,
                         caption = "SEQUENCIAMENTOS REALIZADOS",
@@ -1283,7 +1281,7 @@ flexdashboard::valueBox(ljc_seq,
 ###  {.value-box}
 
 ```{r}
-ljc_sample <- n_distinct(ljc$seq_id)
+ljc_sample <- n_distinct(ljc$redcap_id)
 
 flexdashboard::valueBox(ljc_sample,
                         caption = "AMOSTRAS SEQUENCIADAS",
@@ -1294,7 +1292,7 @@ flexdashboard::valueBox(ljc_sample,
 ###  {.value-box}
 
 ```{r}
-ljc_gi <- sum(grepl("EPI_ISL", ljc$gisaid_id))
+ljc_gi <- sum(grepl("EPI_ISL", ljc$acc_number))
 
 flexdashboard::valueBox(ljc_gi,
                         caption = "GENOMAS DEPOSITADOS NO GISAID",
@@ -1307,9 +1305,9 @@ flexdashboard::valueBox(ljc_gi,
 ### LJC - Produção de genomas de SARS-CoV-2 da FIOCRUZ-BA
 
 ```{r}
-ljc_filt_gi <- ljc %>% filter(!is.na(gisaid_id))
+ljc_filt_gi <- ljc %>% filter(!is.na(acc_number))
 
-ljc_filt_nogi <- ljc %>% filter(is.na(gisaid_id))
+ljc_filt_nogi <- ljc %>% filter(is.na(acc_number))
 
 ljc_gi <- count(ljc_filt_gi$epimseq)
 names(ljc_gi) <- c("epimseq", "submitted")
