@@ -78,11 +78,8 @@ sudo apt-get -y install gnumeric mdbtools
 # criar atalho para o diretório Dados presente no OneDrive
 ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/Dados/ PVM_DADOS
 
-# criar atalho para o diretório Envios presente no OneDrive
-ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/Envios/ PVM_SEQ_BKP
-
-# criar atalho para o diretório Sequenciamento presente no OneDrive
-ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/Sequenciamento/ PVM_SEQ
+# criar atalho para o diretório NGS presente no OneDrive
+ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/NGS/ PVM_SEQ
 
 # criar diretório bin no $HOME do usuário do Linux
 [ ! -d $HOME/bin ] && mkdir $HOME/bin
@@ -91,7 +88,7 @@ ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneD
 ln -s $HOME/PVM_DADOS/Scripts/* $HOME/bin/
 
 # recarregar o perfil de configuração do shell
-source $HOME/.$(ps -p $$ -ocomm=)rc
+source ~/.[bz]shrc
 
 # criar diretório para armazenar os dados baixados do BaseSpace
 [ ! -d /mnt/c/BaseSpace/ ] && mkdir /mnt/c/BaseSpace/
@@ -118,7 +115,7 @@ wget "https://launch.basespace.illumina.com/CLI/latest/amd64-linux/bs" -O $HOME/
 chmod u+x $HOME/bin/bs
 
 # recarregar o perfil de configuração do shell
-source $HOME/.$(ps -p $$ -ocomm=)rc
+source ~/.[bz]shrc
 
 # gerar autorização de login do BaseSpace
 bs auth
