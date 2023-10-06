@@ -52,25 +52,19 @@ Logar no [MS Teams][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/repor
 - **Canal Diagnóstico**
 
 ```text
-MS Teams -> PVM-IGM -> Diagnóstico -> Arquivos -> Sistemas -> Soroteca -> Adicionar atalho ao OneDrive
+MS Teams -> RPT01Q -> Diagnóstico -> Arquivos -> Sistemas -> Soroteca -> Adicionar atalho ao OneDrive
 ```
 
 - **Canal Dados**
 
 ```text
-MS Teams -> PVM-IGM -> Dados -> Arquivos -> Adicionar atalho ao OneDrive
+MS Teams -> RPT01Q -> Dados -> Arquivos -> Adicionar atalho ao OneDrive
 ```
 
-- **Canal Sequenciamento**
+- **Canal NGS**
 
 ```text
-MS Teams -> PVM-IGM -> Sequenciamento -> Arquivos -> Adicionar atalho ao OneDrive
-```
-
-- **Canal Envios**
-
-```text
-MS Teams -> PVM-IGM -> Envios -> Arquivos -> Adicionar atalho ao OneDrive
+MS Teams -> RPT01Q -> NGS -> Arquivos -> Adicionar atalho ao OneDrive
 ```
 
 Após criar atalhos no [OneDrive][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios], checar se há a sincronização:
