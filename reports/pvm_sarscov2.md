@@ -75,6 +75,9 @@ Após criar atalhos no [OneDrive][https://github.com/pvm-igm/pvm-igm.github.io/b
 # instalar ferramenta para lidar com banco de dados .mdb
 sudo apt-get -y install gnumeric mdbtools
 
+# criar atalho para o diretório OneDrive
+ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/ OneDrive
+
 # criar atalho para o diretório Dados presente no OneDrive
 ln -s /mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')/OneDrive\ -\ FIOCRUZ/Dados/ PVM_DADOS
 
@@ -327,14 +330,14 @@ No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sar
 cd $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"
 
 # utilizar o relatório RECap e os arquivos fasta dos genomas para poder gerar os demais relatórios
-PVM_REPORT.sh PVM-SEQ_REDCap_"$LIBRARY".txt $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$LIBRARY".consensus.ARTIC.*.fasta
+PVM_REPORT.sh PVM-SEQ_REDCap_"$LIBRARY".txt $HOME/vigeas/"$LIBRARY"_ANALYSIS/"$LIBRARY".consensus.ARTIC.*.fasta
 ```
 
 Serão gerados os seguintes arquivos:
 
 - `RelatorioCIEVS_yyyy-mm-dd.csv`: arquivo que será encaminhada como relatório para o ***Centro de Informações Estratégicas em Vigilância em Saúde (CIEVS)*** da Secretaria de Estado de Saúde da Bahia (SESAB). O arquivo está salvo no diretório `\OneDrive\OneDrive - FIOCRUZ\Dados\Relatorios\CIEVS`.
 - `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.tsv` / `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.fasta`: arquivos que serão utilizados para organizar a submissão dos genomas para o ***GISAID***. Os arquivos estão salvos no diretório `\OneDrive\OneDrive - FIOCRUZ\Dados\Relatorios\GISAID`.
-- `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd.csv`: arquivo que será utilizado para organizar o relatório relatório da ***Rede Genômica Fiocruz*** da Fundação Oswaldo Cruz (FIOCRUZ). O arquivo está salvo no diretório `\OneDrive\OneDrive - FIOCRUZ\Dados\Relatorios\REDE_GENOMICA`.
+- `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd.csv`: arquivo que será utilizado para organizar o relatório relatório da ***Rede Genômica Fiocruz*** da Fundação Oswaldo Cruz (FIOCRUZ). O arquivo está salvo no diretório `\OneDrive\OneDrive - FIOCRUZ\Dados\Relatorios\REDE_GENOMICA`.
 
 ### Submissão GISAID
 
@@ -373,6 +376,8 @@ cat $HOME/PVM_DADOS/Relatorios/GISAID/gisaid.authtoken | awk -F", " '{print $NF}
 
 ```bash
 # autenticar o GISAID CLI
+cd $HOME/PVM_DADOS/Relatorios/GISAID/gisaid.authtoken
+source cli3venv/bin/activate
 cli3 authenticate
 ```
 
@@ -540,27 +545,27 @@ Nossa equipe está à disposição para quaisquer esclarecimentos adicionais sob
 Para a submissão são necessários um arquivo `*.pdf` do relatório e uma planilha `*.csv` com os dados que compõem o relatório. O modelo do relatório está disponível no diretório `\OneDrive\OneDrive - FIOCRUZ\Dados\Relatorios`.
 
 - Abrir o arquivo modelo do relatório utilizando o [MS PowerPoint][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]. Utilizar os arquivos de acordo com o requisitante do sequenciamento:
-  - **HSR**: `RelatorioRedeGenomica_FIOCRUZBahia_HSR.potx`
-  - **LABCOV**: `RelatorioRedeGenomica_FIOCRUZBahia_LABCOV.potx`
-  - **LACEN-BA** / **PVM**: `RelatorioRedeGenomica_FIOCRUZBahia_GAL.potx`
-  - **LAPEM**: `RelatorioRedeGenomica_FIOCRUZBahia_LAPEM.potx`
-  - **LJC**: `RelatorioRedeGenomica_FIOCRUZBahia_LJC.potx`
-  - **PVM**: `RelatorioRedeGenomica_FIOCRUZBahia_GAL.potx`
+  - **HSR**: `RelatorioRedeGenomica_SARS-CoV-2_FIOCRUZBahia_HSR.potx`
+  - **LABCOV**: `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_LABCOV.potx`
+  - **LACEN-BA**: `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_GAL.potx`
+  - **LAPEM**: `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_LAPEM.potx`
+  - **LJC**: `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_LJC.potx`
+  - **PVM**: `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_GAL.potx`
 
 - Adicionar as seguintes informações adicionais:
   - A data do dia da confecção do relatório é informada como `Versão`.
   - Especificar o laboratório de origem no caso do `LACEN-BA` ou `PVM-IGM`
   - Substituir `XX` pela quantidade de genomas incluídos no relatório em questão.
   - Substituir a versao do pangolin e da base de dados pela utilizada na montagem (*i.e.* Pangolin v.4.0.6 / PUSHER-v1.9).
-  - Abrir o arquivo `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd.csv` e configurar os dados em: ***Arial, fonte tamanho 10, centralizado***.
-  - Prencher as tabelas com os dados configurados da planilha `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd.csv`.
-  - Salvar o arquivo em formato `PowerPoint Presentation (*.pptx)` com nome `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd.pptx`.
-  - Exportar o arquivo em formato `PDF (*.pdf)` com nome `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd.pdf`.
+  - Abrir o arquivo `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd.csv` e configurar os dados em: ***Arial, fonte tamanho 10, centralizado***.
+  - Prencher as tabelas com os dados configurados da planilha `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd.csv`.
+  - Salvar o arquivo em formato `PowerPoint Presentation (*.pptx)` com nome `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd.pptx`.
+  - Exportar o arquivo em formato `PDF (*.pdf)` com nome `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd.pdf`.
   - Na planilha `Produção RGF enviados para o ministério - fechamento toda a quinta-feira`, na aba `IGM`, adicionar a quantidade de genomas submetidos no **GISAID** e nos relatórios da Rede Genômica Fiocruz. A planilha está disponível no [Google Sheets](https://docs.google.com/spreadsheets/d/1UXb4GcDQ7iKnM92Z20iJaxWWgyw536H0By7RdrsqkRc/edit?pli=1#gid=0)
 
 #### E-mail para a Rede Genômica Fiocruz # HSR
 
-Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd_HSR.csv` e `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd_HSR.pdf` em anexo, com as seguintes informações:
+Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd_HSR.csv` e `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd_HSR.pdf` em anexo, com as seguintes informações:
 
 - **Destinatários**
 
@@ -586,7 +591,7 @@ Nossa equipe está à disposição para quaisquer esclarecimentos adicionais sob
 
 #### E-mail para a Rede Genômica Fiocruz # LABCOV
 
-Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd_LABCOV.csv` e `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd_LABCOV.pdf` em anexo, com as seguintes informações:
+Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd_LABCOV.csv` e `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd_LABCOV.pdf` em anexo, com as seguintes informações:
 
 - **Destinatários**
 
@@ -610,7 +615,7 @@ Anexamos o relatório da Rede Genômica referente às linhagens dos genomas do S
 
 #### E-mail para a Rede Genômica Fiocruz # LACEN-BA / PVM-IGM
 
-Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd.csv` e `RelatorioRedeGenomica_FIOCRUZBahia_yyyy-mm-dd.pdf` em anexo, com as seguintes informações:
+Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd.csv` e `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_yyyy-mm-dd.pdf` em anexo, com as seguintes informações:
 
 - **Destinatários**
 
@@ -639,11 +644,8 @@ Os dados gerados pelo sequenciamento e as análises de montagem são armazenados
 - No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
 
 ```bash
-# mover os arquivos fastQ para o diretório de backup
-mv $HOME/BaseSpace/"$LIBRARY" $HOME/TEMP
-
-# mover a análise para o diretório de backup
-mv $HOME/vigeas/"$LIBRARY"_ANALYSIS $HOME/TEMP
+# mover a análise para o diretório OneDrive
+mv $HOME/vigeas/"$LIBRARY"_ANALYSIS $HOME/OneDrive
 ```
 
 #### Envio dos dados para os colaboradores # HSR
