@@ -275,7 +275,7 @@ No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sar
 
 ```bash
 # entrar no diretório dos documentos da biblioteca de sequenciamento
-cd $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"
+cd $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"
 
 # renomear os arquivos para não apresentarem espaços
 for f in *\ *; do rename=$(echo "$f" | sed 's/ /_/g; s/[^A-Za-z0-9_.]/_/g');  mv "$f" "$rename"; done
@@ -324,7 +324,7 @@ No [WSL2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sar
 
 ```bash
 # entrar no diretório dos documentos da biblioteca de sequenciamento
-cd $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"
+cd $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"
 
 # utilizar o relatório RECap e os arquivos fasta dos genomas para poder gerar os demais relatórios
 PVM_REPORT.sh PVM-SEQ_REDCap_"$LIBRARY".txt $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$LIBRARY".consensus.ARTIC.*.fasta
@@ -403,7 +403,7 @@ Após submissão dos genomas no GISAID, utilizar o log gerado do  envio para cri
 
 ```bash
 # gerar lista com seq_virus_name, gisaid_login e gisaid_id
-cat $HOME/PVM_DADOS/Relatorios/GISAID/hCoV-19_FIOCRUZ_BA_PVM_$(date +'%Y%m%d').log | grep "epi_isl_id" | sed 's/{"code": "epi_isl_id", "msg": "//g' | sed 's/"}//g' | awk -F";" '{print $1"\t"$1"\t"$2}' | awk -F"\t" '{$1=substr($1,30); print $1"\t"$2"\tRKhour0\t"$3} ' | awk -F"\t" '{$1 = substr($1,0,length($1)-5)}1' OFS="\t" > $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/GISAID_IDS_"$LIBRARY".txt
+cat $HOME/PVM_DADOS/Relatorios/GISAID/hCoV-19_FIOCRUZ_BA_PVM_$(date +'%Y%m%d').log | grep "epi_isl_id" | sed 's/{"code": "epi_isl_id", "msg": "//g' | sed 's/"}//g' | awk -F";" '{print $1"\t"$1"\t"$2}' | awk -F"\t" '{$1=substr($1,30); print $1"\t"$2"\tRKhour0\t"$3} ' | awk -F"\t" '{$1 = substr($1,0,length($1)-5)}1' OFS="\t" > $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/GISAID_IDS_"$LIBRARY".txt
 ```
 
 Abrir a planilha do relatório REDCAp `PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.xls` utilizando o [MS Excel][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios] e manipular o arquivo de acordo com os seguintes critérios:
@@ -418,7 +418,7 @@ Abrir a planilha do relatório REDCAp `PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARY
 
 ```bash
 # converter arquivo *.xls para *.csv
-ssconvert $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".xls $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv
+ssconvert $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".xls $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv
 ```
 
 - Entrar no endereço [https://bdp.bahia.fiocruz.br][https://bdp.bahia.fiocruz.br], logar, ir para o Projeto `Sequenciamento de SARS-CoV-2` e acessar o ambiente importação de dados:
@@ -657,10 +657,10 @@ Os dados gerados pelo sequenciamento e as análises de montagem do colaborador H
 mkdir -p $HOME/TEMP/HSR/FASTQ $HOME/TEMP/HSR/RESULTS
 
 # copiar os arquivos fastQ das amostras do HSR para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp $HOME/TEMP/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/TEMP/HSR/FASTQ/; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp $HOME/TEMP/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/TEMP/HSR/FASTQ/; done
 
 # copiar a análise das amostras do HSR para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/HSR/RESULTS; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/HSR/RESULTS; done
 ```
 
 Enviar e-mail para o colaborador HSR com o link do diretório com os dados:
@@ -706,10 +706,10 @@ Os dados gerados pelo sequenciamento e as análises de montagem do colaborador L
 mkdir -p $HOME/TEMP/LABCOV/FASTQ $HOME/TEMP/LABCOV/RESULTS
 
 # copiar os arquivos fastQ das amostras do LABCOV para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "LABCOV" | awk -F, '{print $2}'); do cp $HOME/TEMP/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/TEMP/LABCOV/FASTQ/; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "LABCOV" | awk -F, '{print $2}'); do cp $HOME/TEMP/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/TEMP/LABCOV/FASTQ/; done
 
 # copiar a análise das amostras do LABCOV para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "LABCOV" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/LABCOV/RESULTS; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "LABCOV" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/LABCOV/RESULTS; done
 ```
 
 Enviar e-mail para o colaborador do LABCOV (hermespedreira@ufrb.edu.br) com o link do diretório com os dados:
