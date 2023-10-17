@@ -236,7 +236,7 @@ redcap_sars2diag_result_epiypcr$label2 <- paste(redcap_sars2diag_result_epiypcr$
 color_label = c("#EA2F4B", "#24AFDD", "#EA2F4B", "#24AFDD", "#EA2F4B", "#24AFDD", "#EA2F4B", "#24AFDD")
 names(color_label) <- redcap_sars2diag_result_epiypcr$label
 
-color_label2 = c("#F37F9061", "#C9F2FF", "#F37F9061", "#C9F2FF", "#F37F90C8", "#B2E9FB", "#6BCFEF", "#EC4B63")
+color_label2 = c("#F37F9061", "#C9F2FF", "#F37F9061", "#C9F2FF", "#F37F90C8", "#B2E9FB", "#EC4B63","#6BCFEF")
 names(color_label2) <- redcap_sars2diag_result_epiypcr$label
 
 redcap_sars2diag_result_epiypcr_plot <- plot_ly(type = "pie", textinfo = "percent") %>%
