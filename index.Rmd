@@ -519,7 +519,7 @@ sc2_variants <- list(
   "VOC: Omicron (BE.9)" = "BE.9",
   "VOC: Omicron (BE.10)" = "BE.10",
   "VOC: Omicron (FE.1)"  = c("FE.1", "FE.1.2"),
-  "VOC: Omicron (GK.1)" = "GK.1",
+  "VOC: Omicron (GK.1)" = c("GK.1", unique(gi$pangolin_lineage[grep("^GK\\.1\\.", gi$pangolin_lineage)])),
   "VOC: Omicron (DL.1)" = c("DL.1", unique(gi$pangolin_lineage[grep("^DL\\.1\\.", gi$pangolin_lineage)])))
 
 
