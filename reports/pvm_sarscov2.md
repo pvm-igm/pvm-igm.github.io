@@ -52,7 +52,7 @@
 
 ### Configurações para as análises de montagem dos genomas e construção dos relatórios
 
-Logar no [MS Teams](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) e criar atalhos dentro do [OneDrive](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) para os diretórios Dados e NGS. Após criar atalhos no [OneDrive](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios), checar se há a sincronização:
+Logar no [MS Teams](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) e criar atalhos dentro do [OneDrive](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) para os diretórios Dados e NGS. Após criar atalhos no [OneDrive](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios), checar se há a sincronização.
 
 ```text
 # Canal Dados
@@ -62,7 +62,7 @@ MS Teams -> RPT01Q -> Dados -> Arquivos -> Adicionar atalho ao OneDrive
 MS Teams -> RPT01Q -> NGS -> Arquivos -> Adicionar atalho ao OneDrive
 ```
 
-No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
+Instalar as dependências para as análises de montagem dos genomas e construção dos relatórios.
 
 ```bash
 # instalar ferramenta para lidar com banco de dados .mdb
@@ -126,10 +126,7 @@ READ {C:\Users\lpmor22\OneDrive - FIOCRUZ\Dados\Bancos_PVM\Soroteca\ControledeAm
 RELATE {Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\lpmor22\OneDrive - FIOCRUZ\Dados\Bancos_PVM\Soroteca\ControledeAmostras_FioCruz_be.mdb}:tbFreezer Freezer_ID :: ID
 RELATE {Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\lpmor22\OneDrive - FIOCRUZ\Dados\Bancos_PVM\Soroteca\ControledeAmostras_FioCruz_be.mdb}:tbBox Box :: Box_ID
 WRITE REPLACE "Epi7" {Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\lpmor22\OneDrive - FIOCRUZ\Dados\Bancos_PVM\Soroteca;Extended Properties="text;HDR=Yes;FMT=Delimited"} : [ControledeAmostras_FioCruz_be#csv] *
-
 ```
-
-No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
 
 ```bash
 # rodar script para exportar e organizar todas as bases de dados utilizadas para os relatórios
@@ -137,8 +134,6 @@ PVM_DATABASES.sh
 ```
 
 ### Download dos dados da corrida de sequenciamento
-
-No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
 
 ```bash
 # criar array com o nome da biblioteca de sequenciamento
@@ -150,7 +145,7 @@ bs download run --no-metadata --summary -o $HOME/BaseSpace/"$LIBRARY"_SAV -n "$L
 
 ### Avaliação da qualidade da corrida de sequenciamento
 
-Abrir o [Illumina Sequencing Analysis Viewer (SAV)](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) e carregar o diretório da corrida para análise da qualidade:
+Abrir o [Illumina Sequencing Analysis Viewer (SAV)](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) e carregar o diretório da corrida para análise da qualidade.
 
 ```bash
 Browse -> This PC -> WINDOWS (C:) -> BaseSpace -> IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd_SAV -> OK
@@ -180,8 +175,6 @@ Avaliar os seguintes critérios:
 
 ### Download dos dados arquivos fastQ
 
-No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
-
 ```bash
 # criar array com o nome da biblioteca de sequenciamento
 LIBRARY=IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd
@@ -191,8 +184,6 @@ bs download project --no-metadata --summary --extension=fastq.gz -o $HOME/BaseSp
 ```
 
 ### Avaliação da samplesheet do sequenciamento
-
-No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
 
 ```bash
 # converter quebras de linha do formato DOS para UNIX
@@ -208,8 +199,6 @@ nano $HOME/PVM_SEQ/SAMPLE_SHEETS/"$LIBRARY".csv
 - A coluna descrição deve conter a informação do esquema de primer utilizado (*i.e.* ARTIC_V4_1).
 
 ### Atualização das dependências para montagem dos genomas de SARS-CoV-2
-
-No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
 
 ```bash
 # atualizar lista de pacotes do linux
@@ -239,8 +228,6 @@ vigeas-illumina -u
 
 ### Montagem do genomas de SARS-CoV-2
 
-No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
-
 ```bash
 # rodar o vigeas para realizar a montagem dos genomas de SARS-CoV-2
 vigeas-illumina -w 1 -s $HOME/PVM_SEQ/SAMPLE_SHEETS/"$LIBRARY".csv -i $HOME/BaseSpace/"$LIBRARY" -d 10
@@ -256,8 +243,6 @@ Ao final da montagem dos genomas, avaliar as seguintes situações:
 - `IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.summary.SARS-CoV-2.*.yyyy-mm-dd.txt`: se quantidade de genomas está em conformidade com a samplesheet e se as métricas de montagem estão completas.
 
 ### Relatório REDCap
-
-No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios)
 
 ```bash
 # entrar no diretório dos documentos da biblioteca de sequenciamento
@@ -280,12 +265,12 @@ Os arquivos gerados pelo script são:
 - `SolicitacaoMDB_ViaBiobanco_yyyy-mm-dd.tsv`: arquivo auxiliar para montagem do relatório REDCap.
 - `SolicitacaoGal29_ViaGal_yyyy-mm-dd.tsv`: arquivo auxiliar para montagem do relatório REDCap.
 
-Abrir a planilha `PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.tsv` utilizando o [MS Excel][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios] e manipular o arquivo de acordo com os seguintes critérios:
+Abrir a planilha `PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.tsv` utilizando o [MS Excel](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) e manipular o arquivo de acordo com os seguintes critérios:
 
 - Transformar a disposição dos dados das colunas `gal_id` e `cns` em número e retirar os números decimais adicionados.
-- Copiar os dados para [notepadd++][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios].
+- Copiar os dados para [notepadd++](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios).
 - Transformar a disposição dos dados da planilha em `texto`.
-- Colar os dados do [notepadd++][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios] de volta para a planilha.
+- Colar os dados do [notepadd++](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) de volta para a planilha.
 - Salvar a planilha `PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.tsv` em formato "Excel 97-2003 Workbook (*.xls)" com nome `PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.xls`.
 
 - Completar os dados faltantes:
@@ -303,10 +288,8 @@ Abrir a planilha `PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.tsv` utiliza
   - **pipe_assembly / depth_assembly**: utilizar o arquivo `IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd_ASSEMBLY` para obter as informações de sequenciamento, montagem e profundidade utilizada para geração do genoma consenso.
   - **num_total_reads / num_mapp_reads / avg_depth / depth_10x / depth_100x / depth_1000x / ref_cov / ncount / ncount_perc / pango_ver / pango_database_ver / pango_lin / nextclade_ver / clade / nucl_substitutions / nucl_deletions / nucl_inserc / nucl_missing / aa_substitutions / aa_deletions**: utilizar o arquivo `IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.summary.SARS-CoV-2.*.yyyy-mm-dd.txt` gerado na montagem dos genomas para obter as informações das métricas de montagem e definição de linhagem e características do vírus.
   - **gal_complete**: adicionar o valor 2 para todas as entradas.
-  - Abrir a planilha `IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.summary.SARS-CoV-2.*.yyyy-mm-dd` utilizando o [MS Excel][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios] e copiar as métricas de sequenciamento.
+  - Abrir a planilha `IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.summary.SARS-CoV-2.*.yyyy-mm-dd` utilizando o [MS Excel](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) e copiar as métricas de sequenciamento.
   - Salvar as modificações e depois exportar a planilha em formato "Text (Tab delimited) (*.txt)" com nome `PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.txt`.
-
-No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios)
 
 ```bash
 # entrar no diretório dos documentos da biblioteca de sequenciamento
@@ -326,13 +309,13 @@ Serão gerados os seguintes arquivos:
 
 Para a submissão são necessários um arquivo multifasta com os genomas e uma planilha com os metadados requeridos pelo GISAID. O modelo da planilha está disponível no diretório `\OneDrive\OneDrive - FIOCRUZ\Sequenciamento\RELATORIOS`.
 
-- Abrir o arquivo `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.xlt`  utilizando o [MS Excel][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios] e prencher com os dados presentes no arquivo `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.tsv`.
+- Abrir o arquivo `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.xlt`  utilizando o [MS Excel](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) e prencher com os dados presentes no arquivo `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.tsv`.
 - Salvar a planilha `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.xlt` em formato "Excel 97-2003 Workbook (*.xls)" com nome `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.xls`.
 - Deletar `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.tsv`.
 
 #### Submissão via web
 
-- Entrar no endereço [https://www.epicov.org/epi3/frontend][https://www.epicov.org/epi3/frontend].
+- Entrar no endereço [https://www.epicov.org/epi3/frontend](https://www.epicov.org/epi3/frontend).
 - Utilizar username RKhour0.
 - Acessar o ambiente de submissão dos arquivos:
 
@@ -346,16 +329,14 @@ EpiCov -> Upload -> Batch Upload
 
 #### Submissão via GISAID CLI
 
-- Checar a validade do login via GISAID CLI:
-  - No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios)
+- Checar a validade do login via GISAID CLI. Em caso de expiração de login, realizar a autenticação utilizando username RKhour0 e client-ID cid-b3382c70dcc41.
+
+- No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
 
 ```bash
 # abrir arquivo token de login e checar a data de expiração
 cat $HOME/PVM_DADOS/Relatorios/GISAID/gisaid.authtoken | awk -F", " '{print $NF}'
 ```
-
-- Em caso de expiração de login, realizar a autenticação utilizando username RKhour0 e client-ID cid-b3382c70dcc41:
-  - No [WLS2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
 
 ```bash
 # autenticar o GISAID CLI
@@ -365,7 +346,6 @@ cli3 authenticate
 ```
 
 - Converter o arquivo `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.xls` para o formato *.csv:
-  - No [WLS2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
 
 ```bash
 # entrar no diretório dos relatórios do GISAID
