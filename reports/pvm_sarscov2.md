@@ -5,6 +5,10 @@
 - [Requisitos do sistema](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#requisitos-m%C3%ADnimos-do-sistema)
 - [Programas necessários](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios)
 - [Configurações para as análises de montagem dos genomas e construção dos relatórios](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#configura%C3%A7%C3%B5es-para-as-an%C3%A1lises-de-montagem-dos-genomas-e-constru%C3%A7%C3%A3o-dos-relat%C3%B3rios)
+- [Atualização das bases de dados utilizadas para os relatórios](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios)
+- [Download dos dados da corrida de sequenciamento](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#download-dos-dados-da-corrida-de-sequenciamento)
+- [Avaliação da qualidade da corrida de sequenciamento](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento)
+- [Montagem do genomas de SARS-CoV2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov2)
 
 ### Requisitos mínimos do sistema
 
@@ -169,3 +173,50 @@ Avaliar os seguintes critérios:
   - `Read 1 / Read 4 -> Legacy Phasing/Prephasing Rate`: taxa das moléculas em um cluster com perda de sincronismo no momento da detecção de fluorescência. *Phasing* é quando o sequenciamento *fica para trás* e *Prephasing*, quando *avança demais*. O esperado são valores iguais ou abaixo de 0.25 para R1 e R4.
   - `Read 1 / Read 4 -> %>=Q30`: taxa de bases geradas com um índice de qualidade PHRED igual ou maior que 30. A escala PHRED estima a probabilidade de erro na identificação das bases. PHRED 30 quer dizer 1 erro a cada 1000 bases, ou seja, acurácia de 99.90%. O esperado são valores acima de 80% para cartuchos 300-V2, acima de 85% para 150-V3 e acima de 70% para 600-V3.
   - `Read 1 / Read 4 -> Intensity Cycle 1`: média da intensidade da corrida mensurada após o ciclo 1. O esperado são valores acima de 90.
+
+ ### Montagem do genomas de SARS-CoV2
+
+- No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
+
+```bash
+# converter quebras de linha do formato DOS para UNIX
+dos2unix $HOME/PVM_SEQ/SAMPLE_SHEETS/"$LIBRARY".csv
+
+# editar samplesheet da biblioteca de sequenciamento
+nano $HOME/PVM_SEQ/SAMPLE_SHEETS/"$LIBRARY".csv
+```
+
+#### Avaliar a samplesheet do sequenciamento de acordo com os seguintes critérios:
+
+- As amostras e controles não podem conter `-` ou `_` uma vez que estes caracteres são utilizados pelo script de montagem como delimitadores de arquivos.
+- As amostras devem ser identificadas pelo tracking ID biobanco
+- Identificador dos contoles devem sempre conter caractere numérico (*i.e.* MOCK01, CNCDNA01, CNPCR01, CP01).
+- A coluna descrição deve conter a informação do esquema de primer utilizado (*i.e.* ARTIC_V4_1).
+
+No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
+
+```bash
+# atualizar lista de pacotes do linux
+sudo apt -y update
+
+# atualizar o linux e dependências instaladas
+sudo apt -y full-upgrade
+
+# remover dependências que não são mais necessárias
+sudo apt autoremove
+
+# remover arquivos de instalações de dependências
+sudo apt auto-clean
+
+# remover arquivos de instalações de dependências que o auto-clean não consegue resolver
+sudo apt -y purge $(dpkg -l | awk '/^rc/ {print $2}')
+
+# checar se há dependências quebradas
+sudo apt check
+
+# limpar o cachê do conda
+micromamba clean --all -y
+
+# atualizar as dependências utililizadas pelos ambientes do vigeas-illumina
+vigeas-illumina -u
+```
