@@ -2,7 +2,7 @@
 
 ## Análises do sequenciamento de genoma completo de SARS-CoV-2
 
-- [Requisitos do sistema](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#requisitos-m%C3%ADnimos-do-sistema)
+- [Requisitos mínimos do sistema](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#requisitos-m%C3%ADnimos-do-sistema)
 - [Programas necessários](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios)
 - [Configurações para as análises de montagem dos genomas e construção dos relatórios](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#configura%C3%A7%C3%B5es-para-as-an%C3%A1lises-de-montagem-dos-genomas-e-constru%C3%A7%C3%A3o-dos-relat%C3%B3rios)
 - [Atualização das bases de dados utilizadas para os relatórios](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios)
