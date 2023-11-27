@@ -8,7 +8,26 @@
 - [Atualização das bases de dados utilizadas para os relatórios](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-bases-de-dados-utilizadas-para-os-relat%C3%B3rios)
 - [Download dos dados da corrida de sequenciamento](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#download-dos-dados-da-corrida-de-sequenciamento)
 - [Avaliação da qualidade da corrida de sequenciamento](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento)
-- [Montagem do genomas de SARS-CoV2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov2)
+- [Download dos dados arquivos fastQ](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#download-dos-dados-arquivos-fastq)
+- [Avaliação da samplesheet do sequenciamento](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-samplesheet-do-sequenciamento)
+- [Atualização das dependências para montagem dos genomas de SARS-CoV-2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-depend%C3%AAncias-para-montagem-dos-genomas-de-sars-cov-2)
+- [Montagem do genomas de SARS-CoV-2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov-2)
+- [Relatório REDCap](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-redcap)
+- [Submissão GISAID](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#submiss%C3%A3o-gisaid)
+  - [Submissão via web](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#submiss%C3%A3o-via-web)
+  - [Submissão via GISAID CLI](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#submiss%C3%A3o-via-gisaid-cli)
+- [Envio do relatório REDCAP para REDCap FIOCRUZ](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-do-relat%C3%B3rio-redcap-para-redcap-fiocruz)
+- [Relatório CIEVS](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-cievs)
+  - [E-mail para o CIEVS # somente amostras com requisição GAL](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--somente-amostras-com-requisi%C3%A7%C3%A3o-gal)
+  - [E-mail para o CIEVS # amostras com requisição HSR](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-hsr)
+  - [E-mail para o CIEVS # amostras com requisição LABCOV](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-o-cievs--amostras-com-requisi%C3%A7%C3%A3o-labcov)
+- [Relatório Rede Genômica Fiocruz](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-rede-gen%C3%B4mica-fiocruz)
+  - [E-mail para a Rede Genômica Fiocruz # HSR](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--hsr)
+  - [E-mail para a Rede Genômica Fiocruz # LABCOV](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--labcov)
+  - [E-mail para a Rede Genômica Fiocruz # LACEN-BA / PVM-IGM](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#e-mail-para-a-rede-gen%C3%B4mica-fiocruz--lacen-ba--pvm-igm)
+- [Backup dos dados](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#backup-dos-dados)
+  - [Envio dos dados para os colaboradores # HSR](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--hsr)
+  - [Envio dos dados para os colaboradores # LABCOV](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#envio-dos-dados-para-os-colaboradores--labcov)
 
 ### Requisitos mínimos do sistema
 
@@ -171,7 +190,7 @@ LIBRARY=IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd
 bs download project --no-metadata --summary --extension=fastq.gz -o $HOME/BaseSpace/"$LIBRARY" -n "$LIBRARY"
 ```
 
-#### Avaliação da samplesheet do sequenciamento de acordo com os seguintes critérios:
+### Avaliação da samplesheet do sequenciamento
 
 No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
 
@@ -218,7 +237,7 @@ micromamba clean --all -y
 vigeas-illumina -u
 ```
 
-### Montagem do genomas de SARS-CoV2
+### Montagem do genomas de SARS-CoV-2
 
 No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
 
