@@ -403,7 +403,7 @@ REDCap-SARSSeq
 
 ### Relatório CIEVS
 
-Abrir o arquivo `RelatorioCIEVS_yyyy-mm-dd.csv` utilizando o [MS Excel][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios] e avaliar de acordo com os seguintes critérios:
+Abrir o arquivo `RelatorioCIEVS_yyyy-mm-dd.csv` utilizando o [MS Excel](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) e avaliar de acordo com os seguintes critérios:
 
 - Checar se a coluna `NUMERO DE REQUISICAO` está devidamente preenchida.
 - Checar se a coluna `VOC` contém a informação escrita da VOC em questão.
@@ -667,7 +667,7 @@ for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIB
 grep LABCOV $HOME/PVM_DADOS/Bancos_PVM/REDCap_BaseSeqVirPVM_DATA_2023-11-29.csv >> $HOME/OneDrive/LABCOV/SARS-CoV-2/REPORTS/REDCap_BaseSeqVirPVM_DATA_LABCOV.csv
 ```
 
-Enviar e-mail para o colaborador do LABCOV (hermespedreira@ufrb.edu.br) com o link do diretório com os dados:
+Enviar e-mail para o colaborador do LABCOV com o link do diretório com os dados:
 
 - **Destinatários**
 
