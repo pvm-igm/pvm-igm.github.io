@@ -10,8 +10,8 @@
 - [Avaliação da qualidade da corrida de sequenciamento](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento)
 - [Download dos dados arquivos fastQ](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#download-dos-dados-arquivos-fastq)
 - [Avaliação da samplesheet do sequenciamento](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-samplesheet-do-sequenciamento)
-- [Atualização das dependências para montagem dos genomas de SARS-CoV-2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-depend%C3%AAncias-para-montagem-dos-genomas-de-sars-cov-2)
-- [Montagem do genomas de SARS-CoV-2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov-2)
+- [Atualização das dependências para montagem dos genomas](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-depend%C3%AAncias-para-montagem-dos-genomas)
+- [Montagem dos genomas](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-dos-genomas)
 - [Relatório REDCap](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-redcap)
 - [Submissão GISAID](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#submiss%C3%A3o-gisaid)
   - [Submissão via web](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#submiss%C3%A3o-via-web)
@@ -198,7 +198,7 @@ nano $HOME/PVM_SEQ/SAMPLE_SHEETS/"$LIBRARY".csv
 - Identificador dos contoles devem sempre conter caractere numérico (*i.e.* MOCK01, CNCDNA01, CNPCR01, CP01).
 - A coluna descrição deve conter a informação do esquema de primer utilizado (*i.e.* ARTIC_V4_1).
 
-### Atualização das dependências para montagem dos genomas de SARS-CoV-2
+### Atualização das dependências para montagem dos genomas
 
 ```bash
 # atualizar lista de pacotes do linux
@@ -226,10 +226,10 @@ micromamba clean --all -y
 vigeas-illumina -u
 ```
 
-### Montagem do genomas de SARS-CoV-2
+### Montagem dos genomas
 
 ```bash
-# rodar o vigeas para realizar a montagem dos genomas de SARS-CoV-2
+# rodar o vigeas para realizar a montagem dos genomas
 vigeas-illumina -w 1 -s $HOME/PVM_SEQ/SAMPLE_SHEETS/"$LIBRARY".csv -i $HOME/BaseSpace/"$LIBRARY" -d 10
 ```
 
@@ -329,14 +329,14 @@ EpiCov -> Upload -> Batch Upload
 
 #### Submissão via GISAID CLI
 
-- Checar a validade do login via GISAID CLI. Em caso de expiração de login, realizar a autenticação utilizando username RKhour0 e client-ID cid-b3382c70dcc41.
-
-- No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios):
+- Checar a validade do login via GISAID CLI.
 
 ```bash
 # abrir arquivo token de login e checar a data de expiração
 cat $HOME/PVM_DADOS/Relatorios/GISAID/gisaid.authtoken | awk -F", " '{print $NF}'
 ```
+
+- Em caso de expiração de login, realizar a autenticação utilizando username RKhour0 e client-ID cid-b3382c70dcc41.
 
 ```bash
 # autenticar o GISAID CLI
@@ -345,7 +345,7 @@ source cli3venv/bin/activate
 cli3 authenticate
 ```
 
-- Converter o arquivo `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.xls` para o formato *.csv:
+- Converter o arquivo `hCoV-19_FIOCRUZ_BA_PVM_yyyymmdd.xls` para o formato *.csv.
 
 ```bash
 # entrar no diretório dos relatórios do GISAID
@@ -355,8 +355,7 @@ cd $HOME/PVM_DADOS/Relatorios/GISAID/
 ssconvert hCoV-19_FIOCRUZ_BA_PVM_$(date +'%Y%m%d').xls hCoV-19_FIOCRUZ_BA_PVM_$(date +'%Y%m%d').csv
 ```
 
-- Enviar os dados de submissão:
-  - No [WLS2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
+- Enviar os dados de submissão.
 
 ```bash
 # enviar sequências fasta do SARS-CoV-2 e metadados para o GISAID, e no final, gerar um log com as informações dos IDs GISAID das amostras
@@ -365,34 +364,28 @@ cli3 upload --database EpiCoV --metadata $HOME/PVM_DADOS/Relatorios/GISAID/hCoV-
 
 ### Envio do relatório REDCAP para REDCap FIOCRUZ
 
-Após submissão dos genomas no GISAID, utilizar o log gerado do  envio para criar uma lista com informações para completar o relatório REDCap com as variáveis :`seq_virus_name`, `gisaid_login` e `gisaid_login`.
-
-- No [WLS2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
+Após submissão dos genomas no GISAID, utilizar o log gerado do  envio para criar uma lista com informações para completar o relatório REDCap com as variáveis: `seq_virus_name`, `gisaid_login` e `gisaid_login`.
 
 ```bash
 # gerar lista com seq_virus_name, gisaid_login e gisaid_id
 cat $HOME/PVM_DADOS/Relatorios/GISAID/hCoV-19_FIOCRUZ_BA_PVM_$(date +'%Y%m%d').log | grep "epi_isl_id" | sed 's/{"code": "epi_isl_id", "msg": "//g' | sed 's/"}//g' | awk -F";" '{print $1"\t"$1"\t"$2}' | awk -F"\t" '{$1=substr($1,30); print $1"\t"$2"\tRKhour0\t"$3} ' | awk -F"\t" '{$1 = substr($1,0,length($1)-5)}1' OFS="\t" > $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/GISAID_IDS_"$LIBRARY".txt
 ```
 
-Abrir a planilha do relatório REDCAp `PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.xls` utilizando o [MS Excel][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios] e manipular o arquivo de acordo com os seguintes critérios:
-
-- Completar os dados faltantes:
+Abrir a planilha do relatório REDCAp `PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.xls` utilizando o [MS Excel](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) e completar os dados faltantes:
   - **seq_virus_name** / **gisaid_login** / **gisaid_id**: utilizar o arquivo `GISAID_IDS_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.txt` salvo na etapa anterior no diretório `\OneDrive\OneDrive - FIOCRUZ\Sequenciamento\CORRIDAS\DOCUMENTOS\IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd` para completar os dados faltantes.
-
   - Salvar as modificações da planilha, mantendo formato: "Excel 97-2003 Workbook (*.xls)".
 
-  - Converter a planilha do relatório REDCap para o formato *.csv:
-    - No [WLS2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
+- Converter a planilha do relatório REDCap para o formato *.csv.
 
 ```bash
 # converter arquivo *.xls para *.csv
 ssconvert $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".xls $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv
 ```
 
-- Entrar no endereço [https://bdp.bahia.fiocruz.br][https://bdp.bahia.fiocruz.br], logar, ir para o Projeto `Sequenciamento de SARS-CoV-2` e acessar o ambiente importação de dados:
+- Entrar no endereço [https://bdp.bahia.fiocruz.br](https://bdp.bahia.fiocruz.br), logar, ir para o Projeto `Base Sequenciamento Viral PVM-RPT01Q` e acessar o ambiente importação de dados:
 
 ```text
-My Projects -> SARS-CoV-2 -> Sequenciamento de SARS-CoV-2 -> Applications -> Data Import Tool
+My Projects -> Base Sequenciamento Viral PVM-RPT01Q -> Applications -> Data Import Tool
 ```
 
 - Em `Upload your CSV file`, clicar em `Choose File`, selecionar o relatório REDCAP em formato *.csv (`PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.csv`), clicar em `Open` e por fim, em `Upload File`.
@@ -401,16 +394,9 @@ My Projects -> SARS-CoV-2 -> Sequenciamento de SARS-CoV-2 -> Applications -> Dat
 
 - Prosseguir para as demais etapas de relatórios (CIEVS e Rede Genômica Fiocruz), backup e envio dos dados para os colaboradores.
 
-- Obter o banco de dados do REDCAp FIOCRUZ de Sequenciamento de SARS-CoV-2 atualizado:
-  - No [WLS2][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]
-
-```bash
-REDCap-SARSSeq # obter a base de dados do REDCap FIOCRUZ de Sequenciamento de SARS-CoV-2
-```
-
 ### Relatório CIEVS
 
-Abrir o arquivo `RelatorioCIEVS_yyyy-mm-dd.csv` utilizando o [MS Excel][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios] e avaliar de acordo com os seguintes critérios:
+Abrir o arquivo `RelatorioCIEVS_yyyy-mm-dd.csv` utilizando o [MS Excel](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios) e avaliar de acordo com os seguintes critérios:
 
 - Checar se a coluna `NUMERO DE REQUISICAO` está devidamente preenchida.
 - Checar se a coluna `VOC` contém a informação escrita da VOC em questão.
@@ -438,8 +424,8 @@ Prezados colegas,
 
 Anexamos o relatório referente às linhagens dos genomas do SARS-CoV-2 identificadas a partir de amostras coletadas no estado da Bahia. Estamos à disposição para fornecer esclarecimentos adicionais.
 
-Além disso, compartilhamos o link seguro da pasta onde armazenamos todos os arquivos previamente enviados e as informações dos Relatórios Epidemiológicos relacionados aos casos anteriores:
-https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-Dados/EtJAarqETmhAleN09owa0T0B9dvvL9ulq76NagmP028mkw?e=7g3zlR
+Além disso, compartilhamos o link seguro da pasta onde armazenamos todos os arquivos previamente enviados e as informações dos Relatórios Epidemiológicos relacionados aos casos anteriores: https://fiocruzbr.sharepoint.com/:f:/s/RPT01Q-Dados/EuIiOqNQFnFNivRi2n0imckBr0esUdqsbUrxlclzTyHXzw?e=hOJhLF.
+
 Este link foi configurado de forma a garantir o acesso exclusivo ao e-mail de vocês (cievs.notifica@saude.ba.gov.br e divep.covid@saude.ba.gov.br).
 
 Agradecemos imensamente a colaboração de todos na rede de vigilância genômica em nosso país.
@@ -468,7 +454,8 @@ Prezados colegas,
 
 Anexamos o relatório referente às linhagens dos genomas do SARS-CoV-2 identificadas a partir de amostras coletadas no estado da Bahia. No entanto, ressaltamos que, para amostras coletadas no Hospital São Rafael, solicitamos que quaisquer informações adicionais dos pacientes sejam solicitadas diretamente à Dra. Carol Nonaka (carolina.nonaka@hsr.com.br).
 
-Além disso, compartilhamos o link seguro da pasta onde armazenamos todos os arquivos previamente enviados e as informações dos Relatórios Epidemiológicos relacionados aos casos anteriores: https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-Dados/EtJAarqETmhAleN09owa0T0B9dvvL9ulq76NagmP028mkw?e=7g3zlR
+Além disso, compartilhamos o link seguro da pasta onde armazenamos todos os arquivos previamente enviados e as informações dos Relatórios Epidemiológicos relacionados aos casos anteriores: https://fiocruzbr.sharepoint.com/:f:/s/RPT01Q-Dados/EuIiOqNQFnFNivRi2n0imckBr0esUdqsbUrxlclzTyHXzw?e=hOJhLF.
+
 Este link foi configurado de forma a garantir o acesso exclusivo ao e-mail de vocês (cievs.notifica@saude.ba.gov.br e divep.covid@saude.ba.gov.br).
 
 Nossa equipe está à disposição para quaisquer esclarecimentos adicionais sobre o relatório, e ficaremos felizes em ajudá-los da melhor maneira possível. Agradecemos imensamente a colaboração de todos na rede de vigilância genômica em nosso país e, em especial, a contribuição do Hospital São Rafael.
@@ -497,7 +484,8 @@ Prezados colegas,
 
 Anexamos o relatório referente às linhagens dos genomas do SARS-CoV-2 identificadas a partir de amostras coletadas no estado da Bahia. No entanto, ressaltamos que, para amostras coletadas no Laboratório de Diagnóstico Molecular da COVID-19 do CCS/UFRB, solicitamos que quaisquer informações adicionais dos pacientes sejam solicitadas diretamente ao Dr. Hermes Pedreira (hermespedreira@ufrb.edu.br).
 
-Além disso, compartilhamos o link seguro da pasta onde armazenamos todos os arquivos previamente enviados e as informações dos Relatórios Epidemiológicos relacionados aos casos anteriores: https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-Dados/EtJAarqETmhAleN09owa0T0B9dvvL9ulq76NagmP028mkw?e=7g3zlR
+Além disso, compartilhamos o link seguro da pasta onde armazenamos todos os arquivos previamente enviados e as informações dos Relatórios Epidemiológicos relacionados aos casos anteriores: https://fiocruzbr.sharepoint.com/:f:/s/RPT01Q-Dados/EuIiOqNQFnFNivRi2n0imckBr0esUdqsbUrxlclzTyHXzw?e=hOJhLF.
+
 Este link foi configurado de forma a garantir o acesso exclusivo ao e-mail de vocês (cievs.notifica@saude.ba.gov.br e divep.covid@saude.ba.gov.br).
 
 Nossa equipe está à disposição para quaisquer esclarecimentos adicionais sobre o relatório, e ficaremos felizes em ajudá-los da melhor maneira possível. Agradecemos imensamente a colaboração de todos na rede de vigilância genômica em nosso país e, em especial, a contribuição do Laboratório de Diagnóstico Molecular da COVID-19 do CCS/UFRB.
@@ -507,7 +495,7 @@ Nossa equipe está à disposição para quaisquer esclarecimentos adicionais sob
 
 Para a submissão são necessários um arquivo `*.pdf` do relatório e uma planilha `*.csv` com os dados que compõem o relatório. O modelo do relatório está disponível no diretório `\OneDrive\OneDrive - FIOCRUZ\Dados\Relatorios`.
 
-- Abrir o arquivo modelo do relatório utilizando o [MS PowerPoint][https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios]. Utilizar os arquivos de acordo com o requisitante do sequenciamento:
+- Abrir o arquivo modelo do relatório utilizando o [MS PowerPoint](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios). Utilizar os arquivos de acordo com o requisitante do sequenciamento:
   - **HSR**: `RelatorioRedeGenomica_SARS-CoV-2_FIOCRUZBahia_HSR.potx`
   - **LABCOV**: `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_LABCOV.potx`
   - **LACEN-BA**: `RelatorioRedeGenomica_FIOCRUZBahia_SARS-CoV-2_GAL.potx`
@@ -533,7 +521,7 @@ Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `Rel
 - **Destinatários**
 
 ```text
-brunosolanosouza@gmail.com; camila.indiani@fiocruz.br; carolina.nonaka@hsr.com.br; cievs.notifica@saude.ba.gov.br; cglab.informacao@saude.gov.br; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; helena.franz@saude.gov.br; lacen.clavep@saude.ba.gov.br; marilda.goncalves@fiocruz.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pedro.almeida@saude.gov.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; thiago.guedes@saude.gov.br; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
+brunosolanosouza@gmail.com; carolina.nonaka@hsr.com.br; bruno.milagres@saude.gov.br; cglab.coordenacao@saude.gov.br; cglab.informacao@saude.gov.br; cievs.notifica@saude.ba.gov.br; cvslr@fiocruz.br; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; lacen.clavep@saude.ba.gov.br; lourdes.oliveira@fiocruz.br; luanabarbagelata@iec.gov.br; marilda.goncalves@fiocruz.br; marilia.oliveira@saude.gov.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notifica@saude.gov.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
 ```
 
 - **Assunto**
@@ -559,7 +547,8 @@ Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `Rel
 - **Destinatários**
 
 ```text
-camila.indiani@fiocruz.br; cievs.notifica@saude.ba.gov.br; cglab.informacao@saude.gov.br; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; helena.franz@saude.gov.br; hermespedreira@ufrb.edu.br; lacen.clavep@saude.ba.gov.br; marilda.goncalves@fiocruz.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pedro.almeida@saude.gov.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; thiago.guedes@saude.gov.br; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
+hermespedreira@ufrb.edu.br; bruno.milagres@saude.gov.br; cglab.coordenacao@saude.gov.br; cglab.informacao@saude.gov.br; cievs.notifica@saude.ba.gov.br; cvslr@fiocruz.br
+elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; lacen.clavep@saude.ba.gov.br; lourdes.oliveira@fiocruz.br; luanabarbagelata@iec.gov.br; marilda.goncalves@fiocruz.br; marilia.oliveira@saude.gov.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notifica@saude.gosv.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
 ```
 
 - **Assunto**
@@ -583,7 +572,7 @@ Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `Rel
 - **Destinatários**
 
 ```text
-camila.indiani@fiocruz.br; cievs.notifica@saude.ba.gov.br; cglab.informacao@saude.gov.br; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; helena.franz@saude.gov.br; lacen.clavep@saude.ba.gov.br; marilda.goncalves@fiocruz.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pedro.almeida@saude.gov.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; thiago.guedes@saude.gov.br; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
+brunosolanosouza@gmail.com; carolina.nonaka@hsr.com.br; bruno.milagres@saude.gov.br; cglab.coordenacao@saude.gov.br; cglab.informacao@saude.gov.br; cievs.notifica@saude.ba.gov.br; cvslr@fiocruz.br; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; lacen.clavep@saude.ba.gov.br; lourdes.oliveira@fiocruz.br; luanabarbagelata@iec.gov.br; marilda.goncalves@fiocruz.br; marilia.oliveira@saude.gov.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notifica@saude.gov.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
 ```
 
 - **Assunto**
@@ -602,30 +591,26 @@ Anexamos o relatório da Rede Genômica referente às linhagens dos genomas do S
 
 ### Backup dos dados
 
-Os dados gerados pelo sequenciamento e as análises de montagem são armazenados dentro do canal `Sequenciamento Backup` em diretórios dedicados:
-
-- No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios)
+Os dados gerados pelo sequenciamento e as análises de montagem são armazenados dentro do canal `Sequenciamento Backup` em diretórios dedicados.
 
 ```bash
 # mover a análise para o diretório OneDrive
-mv $HOME/vigeas/"$LIBRARY"_ANALYSIS $HOME/OneDrive
+mv $HOME/vigeas/"$LIBRARY"_ANALYSIS $HOME/OneDrive/2023_Illumina
 ```
 
 #### Envio dos dados para os colaboradores # HSR
 
-Os dados gerados pelo sequenciamento e as análises de montagem do colaborador HSR são armazenados dentro do canal `Sequenciamento Backup` em diretório dedicado: `\OneDrive\OneDrive - FIOCRUZ\Sequenciamento Backup\PVM_COLAB\HSR`.
-
-- No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios)
+Os dados gerados pelo sequenciamento e as análises de montagem do colaborador HSR são armazenados dentro do canal `Sequenciamento Backup` em diretório dedicado: `NGS_PVM_COLAB\HSR`.
 
 ```bash
-# criar os diretórios do colaborador HSR no diretório de envio para o Teams
-mkdir -p $HOME/TEMP/HSR/FASTQ $HOME/TEMP/HSR/RESULTS
-
 # copiar os arquivos fastQ das amostras do HSR para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp $HOME/TEMP/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/TEMP/HSR/FASTQ/; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $9","$18}' | grep "HSR" | awk -F, '{print $2}'); do cp $HOME/BaseSpace/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/OneDrive/HSR/SARS-CoV-2/FASTQ/; done
 
 # copiar a análise das amostras do HSR para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "HSR" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/HSR/RESULTS; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $9","$18}' | grep "HSR" | awk -F, '{print $2}'); do cp -r $HOME/OneDrive/2023_Illumina/"$LIBRARY"_ANALYSIS/"$i" $HOME/OneDrive/HSR/SARS-CoV-2/ASSEMBLY; done
+
+# copiar o relatório REDCap HSR para o diretório de backup
+grep HSR $HOME/PVM_DADOS/Bancos_PVM/REDCap_BaseSeqVirPVM_DATA_2023-11-29.csv >> $HOME/OneDrive/HSR/SARS-CoV-2/REPORTS/REDCap_BaseSeqVirPVM_DATA_HSR.csv
 ```
 
 Enviar e-mail para o colaborador HSR com o link do diretório com os dados:
@@ -658,26 +643,24 @@ Estamos à disposição para esclarecer quaisquer dúvidas que possam surgir.
 
 - **Anexo**
 
-![HSR GISAID Search][pvm_sarscov2_hsr_gisaid_search.png]
+![HSR GISAID Search](pvm_sarscov2_hsr_gisaid_search.png)
 
 #### Envio dos dados para os colaboradores # LABCOV
 
-Os dados gerados pelo sequenciamento e as análises de montagem do colaborador LABCOV são armazenados dentro do canal `Sequenciamento Backup` em diretório dedicado: `\OneDrive\OneDrive - FIOCRUZ\Sequenciamento Backup\PVM_COLAB\LABCOV`.
-
-- No [WSL2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#programas-necess%C3%A1rios)
+Os dados gerados pelo sequenciamento e as análises de montagem do colaborador LABCOV são armazenados dentro do canal `Sequenciamento Backup` em diretório dedicado: `NGS_PVM_COLAB\LABCOV`.
 
 ```bash
-# criar os diretórios do colaborador LABCOV no diretório de envio para o Teams
-mkdir -p $HOME/TEMP/LABCOV/FASTQ $HOME/TEMP/LABCOV/RESULTS
-
 # copiar os arquivos fastQ das amostras do LABCOV para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "LABCOV" | awk -F, '{print $2}'); do cp $HOME/TEMP/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/TEMP/LABCOV/FASTQ/; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $9","$18}' | grep "LABCOV" | awk -F, '{print $2}'); do cp $HOME/BaseSpace/"$LIBRARY"/"$i"*/"$i"*.fastq.gz $HOME/OneDrive/LABCOV/SARS-CoV-2/FASTQ/; done
 
 # copiar a análise das amostras do LABCOV para o diretório de backup
-for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $10","$22}' | grep "LABCOV" | awk -F, '{print $2}'); do cp -r $HOME/TEMP/"$LIBRARY"_ANALYSIS/"$i" $HOME/TEMP/LABCOV/RESULTS; done
+for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $9","$18}' | grep "LABCOV" | awk -F, '{print $2}'); do cp -r $HOME/OneDrive/2023_Illumina/"$LIBRARY"_ANALYSIS/"$i" $HOME/OneDrive/LABCOV/SARS-CoV-2/ASSEMBLY; done
+
+# copiar o relatório REDCap LABCOV para o diretório de backup
+grep LABCOV $HOME/PVM_DADOS/Bancos_PVM/REDCap_BaseSeqVirPVM_DATA_2023-11-29.csv >> $HOME/OneDrive/LABCOV/SARS-CoV-2/REPORTS/REDCap_BaseSeqVirPVM_DATA_LABCOV.csv
 ```
 
-Enviar e-mail para o colaborador do LABCOV (hermespedreira@ufrb.edu.br) com o link do diretório com os dados:
+Enviar e-mail para o colaborador do LABCOV com o link do diretório com os dados:
 
 - **Destinatários**
 
@@ -698,7 +681,7 @@ Prezado Dr. Hermes Pedreira,
 
 Estamos disponibilizando o link para acesso aos arquivos FastQ gerados no sequenciamento, juntamente com os arquivos relacionados à montagem dos genomas de SARS-CoV-2. O acesso a este link é restrito e requer a credencial do e-mail solicitante do sequenciamento (hermespedreira@ufrb.edu.br).
 
-Link: https://fiocruzbr.sharepoint.com/:f:/s/PVM-IGM-BackupMiseq/EmKDjUM_A69ClAoOrod2rKwB2mewIclQDCrttvPU5LYbPQ?email=hermespedreira%40ufrb.edu.br&e=DpX2Oz.
+Link: https://fiocruzbr.sharepoint.com/:f:/s/RPT01Q-Backup/ErgfDFkG_rJBvCtpIP0bQNEBXHm9nwYmo2mJEvwEzHNwFA.
 
 Além disso, as sequências em formato FASTA estão disponíveis na Plataforma GISAID. Para realizar uma busca direcionada aos genomas do LABCOV gerados pela PVM, acesse a aba "EpiCoV -> Search" e insira o termo "FIOCRUZ-PVM" no campo "Virus name" e o termo "LABCOV" em "Text Search".
 
@@ -707,4 +690,4 @@ Estamos à disposição para esclarecer quaisquer dúvidas que possam surgir.
 
 - **Anexo**
 
-![LABCOV GISAID Search][pvm_sarscov2_labcov_gisaid_search.png]
+![LABCOV GISAID Search](pvm_sarscov2_labcov_gisaid_search.png)
