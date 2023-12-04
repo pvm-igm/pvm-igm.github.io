@@ -10,8 +10,8 @@
 - [Avaliação da qualidade da corrida de sequenciamento](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-qualidade-da-corrida-de-sequenciamento)
 - [Download dos dados arquivos fastQ](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#download-dos-dados-arquivos-fastq)
 - [Avaliação da samplesheet do sequenciamento](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#avalia%C3%A7%C3%A3o-da-samplesheet-do-sequenciamento)
-- [Atualização das dependências para montagem dos genomas de SARS-CoV-2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-depend%C3%AAncias-para-montagem-dos-genomas-de-sars-cov-2)
-- [Montagem do genomas de SARS-CoV-2](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-do-genomas-de-sars-cov-2)
+- [Atualização das dependências para montagem dos genomas](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#atualiza%C3%A7%C3%A3o-das-depend%C3%AAncias-para-montagem-dos-genomas)
+- [Montagem dos genomas](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#montagem-dos-genomas)
 - [Relatório REDCap](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#relat%C3%B3rio-redcap)
 - [Submissão GISAID](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#submiss%C3%A3o-gisaid)
   - [Submissão via web](https://github.com/pvm-igm/pvm-igm.github.io/blob/main/reports/pvm_sarscov2.md#submiss%C3%A3o-via-web)
@@ -198,7 +198,7 @@ nano $HOME/PVM_SEQ/SAMPLE_SHEETS/"$LIBRARY".csv
 - Identificador dos contoles devem sempre conter caractere numérico (*i.e.* MOCK01, CNCDNA01, CNPCR01, CP01).
 - A coluna descrição deve conter a informação do esquema de primer utilizado (*i.e.* ARTIC_V4_1).
 
-### Atualização das dependências para montagem dos genomas de SARS-CoV-2
+### Atualização das dependências para montagem dos genomas
 
 ```bash
 # atualizar lista de pacotes do linux
@@ -226,10 +226,10 @@ micromamba clean --all -y
 vigeas-illumina -u
 ```
 
-### Montagem do genomas de SARS-CoV-2
+### Montagem dos genomas
 
 ```bash
-# rodar o vigeas para realizar a montagem dos genomas de SARS-CoV-2
+# rodar o vigeas para realizar a montagem dos genomas
 vigeas-illumina -w 1 -s $HOME/PVM_SEQ/SAMPLE_SHEETS/"$LIBRARY".csv -i $HOME/BaseSpace/"$LIBRARY" -d 10
 ```
 
@@ -385,7 +385,7 @@ ssconvert $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY"
 - Entrar no endereço [https://bdp.bahia.fiocruz.br](https://bdp.bahia.fiocruz.br), logar, ir para o Projeto `Base Sequenciamento Viral PVM-RPT01Q` e acessar o ambiente importação de dados:
 
 ```text
-My Projects -> SARS-CoV-2 -> Sequenciamento de SARS-CoV-2 -> Applications -> Data Import Tool
+My Projects -> Base Sequenciamento Viral PVM-RPT01Q -> Applications -> Data Import Tool
 ```
 
 - Em `Upload your CSV file`, clicar em `Choose File`, selecionar o relatório REDCAP em formato *.csv (`PVM-SEQ_REDCap_IGM_PVM_MISEQ_DNAP_LIBRARYyyyymmdd.csv`), clicar em `Open` e por fim, em `Upload File`.
@@ -393,13 +393,6 @@ My Projects -> SARS-CoV-2 -> Sequenciamento de SARS-CoV-2 -> Applications -> Dat
 - Após enviar o arquivo confirmar se os dados carregados estão dispostos corretamente e clicar em `Import Data` para finalizar o processo.
 
 - Prosseguir para as demais etapas de relatórios (CIEVS e Rede Genômica Fiocruz), backup e envio dos dados para os colaboradores.
-
-- Obter o banco de dados do REDCAp FIOCRUZ de Sequenciamento de SARS-CoV-2 atualizado.
-
-```bash
-# obter a base de dados do REDCap FIOCRUZ de Sequenciamento de SARS-CoV-2
-REDCap-SARSSeq
-```
 
 ### Relatório CIEVS
 
