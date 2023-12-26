@@ -223,14 +223,14 @@ sudo apt check
 micromamba clean --all -y
 
 # atualizar as dependências utililizadas pelos ambientes do vigeas-illumina
-vigeas-illumina -u
+vigeas update
 ```
 
 ### Montagem dos genomas
 
 ```bash
 # rodar o vigeas para realizar a montagem dos genomas
-vigeas-illumina -w 1 -s $HOME/PVM_SEQ/SAMPLE_SHEETS/"$LIBRARY".csv -i $HOME/BaseSpace/"$LIBRARY" -d 10
+vigeas dnap -i $HOME/BaseSpace/"$LIBRARY" -s $HOME/PVM_SEQ/SAMPLE_SHEETS/"$LIBRARY".csv
 ```
 
 A montagem dos genoma demora cerca de 2 minutos por genoma em um computador com *hardware* de 9ª geração Intel Core i7 com 16 GB de memória RAM.
