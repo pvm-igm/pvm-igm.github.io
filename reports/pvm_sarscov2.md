@@ -548,7 +548,7 @@ Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `Rel
 
 ```text
 hermespedreira@ufrb.edu.br; bruno.milagres@saude.gov.br; cglab.coordenacao@saude.gov.br; cglab.informacao@saude.gov.br; cievs.notifica@saude.ba.gov.br; cvslr@fiocruz.br
-elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; lacen.clavep@saude.ba.gov.br; lourdes.oliveira@fiocruz.br; luanabarbagelata@iec.gov.br; marilda.goncalves@fiocruz.br; marilia.oliveira@saude.gov.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notifica@saude.gosv.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
+elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; lacen.clavep@saude.ba.gov.br; lourdes.oliveira@fiocruz.br; luanabarbagelata@iec.gov.br; marilda.goncalves@fiocruz.br; marilia.oliveira@saude.gov.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notifica@saude.gov.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
 ```
 
 - **Assunto**
@@ -657,7 +657,7 @@ for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIB
 for i in $(cat $HOME/PVM_SEQ/DOCUMENTOS_CORRIDAS/"$LIBRARY"/PVM-SEQ_REDCap_"$LIBRARY".csv | awk -F, '{print $9","$18}' | grep "LABCOV" | awk -F, '{print $2}'); do cp -r $HOME/OneDrive/2023_Illumina/"$LIBRARY"_ANALYSIS/"$i" $HOME/OneDrive/LABCOV/SARS-CoV-2/ASSEMBLY; done
 
 # copiar o relatório REDCap LABCOV para o diretório de backup
-grep LABCOV $HOME/PVM_DADOS/Bancos_PVM/REDCap_BaseSeqVirPVM_DATA_2023-11-29.csv >> $HOME/OneDrive/LABCOV/SARS-CoV-2/REPORTS/REDCap_BaseSeqVirPVM_DATA_LABCOV.csv
+grep LABCOV $HOME/PVM_DADOS/Bancos_PVM/REDCap_BaseSeqVirPVM_DATA_*.csv > $HOME/OneDrive/LABCOV/SARS-CoV-2/REPORTS/REDCap_BaseSeqVirPVM_DATA_LABCOV.csv
 ```
 
 Enviar e-mail para o colaborador do LABCOV com o link do diretório com os dados:
