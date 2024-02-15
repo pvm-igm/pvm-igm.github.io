@@ -521,7 +521,9 @@ sc2_variants <- list(
   "VOC: Omicron (FE.1)"  = c("FE.1", "FE.1.2"),
   "VOC: Omicron (GK.1)" = c("GK.1", unique(gi$pangolin_lineage[grep("^GK\\.1\\.", gi$pangolin_lineage)])),
     "VOC: Omicron (JD.1)" = c("JD.1", unique(gi$pangolin_lineage[grep("^JD\\.1\\.", gi$pangolin_lineage)])),
-  "VOC: Omicron (DL.1)" = c("DL.1", unique(gi$pangolin_lineage[grep("^DL\\.1\\.", gi$pangolin_lineage)])), unique(gi$pangolin_lineage[grep("^JN\\.1\\.", gi$pangolin_lineage)])))
+  "VOC: Omicron (DL.1)" = c("DL.1", unique(gi$pangolin_lineage[grep("^DL\\.1\\.", gi$pangolin_lineage)])),
+    "VOC: Omicron (JN.1)" = c("JN.1",
+unique(gi$pangolin_lineage[grep("^JN\\.1\\.", gi$pangolin_lineage)])))
 
 
 sc2_oms <- structure(c(rep(names(sc2_variants), sapply(sc2_variants, length))),
