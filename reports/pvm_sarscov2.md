@@ -521,7 +521,7 @@ Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `Rel
 - **Destinatários**
 
 ```text
-brunosolanosouza@gmail.com; carolina.nonaka@hsr.com.br; bruno.milagres@saude.gov.br; cglab.coordenacao@saude.gov.br; cglab.informacao@saude.gov.br; cievs.notifica@saude.ba.gov.br; cvslr@fiocruz.br; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; lacen.clavep@saude.ba.gov.br; lourdes.oliveira@fiocruz.br; luanabarbagelata@iec.gov.br; marilda.goncalves@fiocruz.br; marilia.oliveira@saude.gov.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notifica@saude.gov.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
+brunosolanosouza@gmail.com; carolina.nonaka@hsr.com.br; bruno.milagres@saude.gov.br; cglab.coordenacao@saude.gov.br; cglab.informacao@saude.gov.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; luanabarbagelata@iec.gov.br; miriam.livorati@saude.gov.br; marilia.oliveira@saude.gov.br; nereu@conass.org.br; notifica@saude.gov.br; walquiria.almeida@saude.gov.br; cievs.notifica@saude.ba.gov.br; lacen.clavep@saude.ba.gov.br; notificasalvador@gmail.com; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; mmsiq@ioc.fiocruz.br; paola@ioc.fiocruz.br; lourdes.oliveira@fiocruz.br; cvslr@fiocruz.br; tiago.graf@fiocruz.br; marilda.goncalves@fiocruz.br; ricardo.riccio@fiocruz.br; pvm@fiocruz.br; ricardo_khouri@hotmail.com
 ```
 
 - **Assunto**
@@ -547,8 +547,7 @@ Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `Rel
 - **Destinatários**
 
 ```text
-hermespedreira@ufrb.edu.br; bruno.milagres@saude.gov.br; cglab.coordenacao@saude.gov.br; cglab.informacao@saude.gov.br; cievs.notifica@saude.ba.gov.br; cvslr@fiocruz.br
-elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; lacen.clavep@saude.ba.gov.br; lourdes.oliveira@fiocruz.br; luanabarbagelata@iec.gov.br; marilda.goncalves@fiocruz.br; marilia.oliveira@saude.gov.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notifica@saude.gov.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
+hermespedreira@ufrb.edu.br; bruno.milagres@saude.gov.br; cglab.coordenacao@saude.gov.br; cglab.informacao@saude.gov.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; luanabarbagelata@iec.gov.br; miriam.livorati@saude.gov.br; marilia.oliveira@saude.gov.br; nereu@conass.org.br; notifica@saude.gov.br; walquiria.almeida@saude.gov.br; cievs.notifica@saude.ba.gov.br; lacen.clavep@saude.ba.gov.br; notificasalvador@gmail.com; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; mmsiq@ioc.fiocruz.br; paola@ioc.fiocruz.br; lourdes.oliveira@fiocruz.br; cvslr@fiocruz.br; tiago.graf@fiocruz.br; marilda.goncalves@fiocruz.br; ricardo.riccio@fiocruz.br; pvm@fiocruz.br; ricardo_khouri@hotmail.com
 ```
 
 - **Assunto**
@@ -572,7 +571,7 @@ Enviar e-mail para os integrantes da Rede Genômica Fiocruz com os arquivos `Rel
 - **Destinatários**
 
 ```text
-brunosolanosouza@gmail.com; carolina.nonaka@hsr.com.br; bruno.milagres@saude.gov.br; cglab.coordenacao@saude.gov.br; cglab.informacao@saude.gov.br; cievs.notifica@saude.ba.gov.br; cvslr@fiocruz.br; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; lacen.clavep@saude.ba.gov.br; lourdes.oliveira@fiocruz.br; luanabarbagelata@iec.gov.br; marilda.goncalves@fiocruz.br; marilia.oliveira@saude.gov.br; miriam.livorati@saude.gov.br; mmsiq@ioc.fiocruz.br; nereu@conass.org.br; notifica@saude.gov.br; notificasalvador@gmail.com; paola@ioc.fiocruz.br; pvm@fiocruz.br; ricardo.riccio@fiocruz.br; ricardo_khouri@hotmail.com; tiago.graf@fiocruz.br; walquiria.almeida@saude.gov.br
+bruno.milagres@saude.gov.br; cglab.coordenacao@saude.gov.br; cglab.informacao@saude.gov.br; greice.madeleine@saude.gov.br; gripe@saude.gov.br; katiaocorrea@gmail.com; luanabarbagelata@iec.gov.br; miriam.livorati@saude.gov.br; marilia.oliveira@saude.gov.br; nereu@conass.org.br; notifica@saude.gov.br; walquiria.almeida@saude.gov.br; cievs.notifica@saude.ba.gov.br; lacen.clavep@saude.ba.gov.br; notificasalvador@gmail.com; elisa.cavalcante@ioc.fiocruz.br; fcm@ioc.fiocruz.br; mmsiq@ioc.fiocruz.br; paola@ioc.fiocruz.br; lourdes.oliveira@fiocruz.br; cvslr@fiocruz.br; tiago.graf@fiocruz.br; marilda.goncalves@fiocruz.br; ricardo.riccio@fiocruz.br; pvm@fiocruz.br; ricardo_khouri@hotmail.com
 ```
 
 - **Assunto**
@@ -594,8 +593,13 @@ Anexamos o relatório da Rede Genômica referente às linhagens dos genomas do S
 Os dados gerados pelo sequenciamento e as análises de montagem são armazenados dentro do canal `Sequenciamento Backup` em diretórios dedicados.
 
 ```bash
+# mover os arquivos fastQ para o diretório OneDrive
+for i in $(find $HOME/BaseSpace/"$LIBRARY" -type f -name '*fastq.gz'); do mv "$i" $HOME/BaseSpace/"$LIBRARY"; done
+rm -d $HOME/BaseSpace/"$LIBRARY"/*_ds*
+mv $HOME/BaseSpace/"$LIBRARY" $HOME/OneDrive/transfer
+
 # mover a análise para o diretório OneDrive
-mv $HOME/vigeas/"$LIBRARY"_ANALYSIS $HOME/OneDrive/2023_Illumina
+mv $HOME/vigeas/"$LIBRARY"_ANALYSIS $HOME/OneDrive/transfer
 ```
 
 #### Envio dos dados para os colaboradores # HSR
