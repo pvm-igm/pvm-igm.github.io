@@ -523,7 +523,8 @@ sc2_variants <- list(
     "VOC: Omicron (JD.1)" = c("JD.1", unique(gi$pangolin_lineage[grep("^JD\\.1\\.", gi$pangolin_lineage)])),
   "VOC: Omicron (DL.1)" = c("DL.1", unique(gi$pangolin_lineage[grep("^DL\\.1\\.", gi$pangolin_lineage)])),
     "VOC: Omicron (JN.1)" = c("JN.1",
-unique(gi$pangolin_lineage[grep("^JN\\.1\\.", gi$pangolin_lineage)])))
+unique(gi$pangolin_lineage[grep("^JN\\.1\\.", gi$pangolin_lineage)])),
+  "VOC: Omicron (MJ.1)" = "MJ.1", unique(gi$pangolin_lineage[grep("^MJ\\.1\\.", gi$pangolin_lineage)]))
 
 
 sc2_oms <- structure(c(rep(names(sc2_variants), sapply(sc2_variants, length))),
@@ -606,6 +607,7 @@ gi_bahia_epiwseq_plot <- plotly::ggplotly(
       "VOC: Omicron (FE.1)" = "#FFFF00",
       "VOC: Omicron (JD.1)" = "#FF0066",
       "VOC: Omicron (JN.1)" = "#336600",
+      "VOC: Omicron (MJ.1)" = "#8B0000",
       "Others" = "#999999")) + theme_light() +
     theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8),
           axis.text.y = element_text(hjust = 1, size = 8),
